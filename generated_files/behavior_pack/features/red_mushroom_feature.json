@@ -1,9 +1,0 @@
-{
-  "minecraft:single_block_feature": {
-    "enforce_survivability_rules": true,
-    "description": {"identifier": "minecraft:red_mushroom_feature"},
-    "enforce_placement_rules": true,
-    "places_block": "minecraft:green_glazed_terracotta"
-  },
-  "format_version": "1.13.0"
-}
