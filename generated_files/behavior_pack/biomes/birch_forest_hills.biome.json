@@ -1,0 +1,37 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "mutated": {},
+      "forest": {},
+      "birch": {},
+      "ice_plains": {},
+      "taiga": {},
+      "minecraft:overworld_height": {"noise_type": "mountains"},
+      "overworld": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 0.6,
+        "downfall": 0.6
+      },
+      "monster": {},
+      "bee_habitat": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:gold_block",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:obsidian",
+        "sea_floor_material": "minecraft:chiseled_polished_blackstone",
+        "foundation_material": "minecraft:warped_nylium"
+      },
+      "minecraft:overworld_generation_rules": {"mutate_transformation": "birch_forest_hills_mutated"},
+      "rare": {},
+      "hills": {},
+      "animal": {}
+    },
+    "description": {"identifier": "birch_forest_hills"}
+  }
+}

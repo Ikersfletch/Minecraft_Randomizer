@@ -1,0 +1,69 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "spawn_ghast": {},
+      "mutated": {},
+      "nether": {},
+      "forest": {},
+      "basalt_deltas": {},
+      "minecraft:nether_generation_rules": {
+        "target_altitude": 0,
+        "target_weirdness": 0,
+        "target_humidity": 0,
+        "weight": 0.175,
+        "target_temperature": -0.5
+      },
+      "overworld_generation": {},
+      "frozen": {},
+      "spawn_many_magma_cubes": {},
+      "overworld": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "white_ash": 2,
+        "temperature": 2,
+        "downfall": 0
+      },
+      "monster": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 1,
+        "top_material": "minecraft:bookshelf",
+        "sea_material": "minecraft:lava",
+        "mid_material": "minecraft:glowstone",
+        "sea_floor_material": "minecraft:mossy_cobblestone_stairs",
+        "foundation_material": "minecraft:purpur_block"
+      },
+      "minecraft:surface_material_adjustments": {"adjustments": [
+        {
+          "noise_range": [
+            -1,
+            0
+          ],
+          "materials": {
+            "top_material": "minecraft:blackstone",
+            "mid_material": "minecraft:blackstone"
+          },
+          "noise_frequency_scale": 0.1
+        },
+        {
+          "noise_range": [
+            -1,
+            0.5
+          ],
+          "materials": {"top_material": "minecraft:gravel"},
+          "noise_frequency_scale": 0.4125,
+          "height_range": [
+            "variable.sea_level - 3",
+            "variable.sea_level + 2"
+          ]
+        }
+      ]},
+      "hills": {},
+      "animal": {}
+    },
+    "description": {"identifier": "basalt_deltas"}
+  }
+}

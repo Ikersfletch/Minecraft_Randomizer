@@ -1,0 +1,35 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "forest": {},
+      "taiga": {},
+      "minecraft:overworld_height": {"noise_type": "stone_beach"},
+      "overworld": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.25
+        ],
+        "temperature": 0.2,
+        "downfall": 0.3
+      },
+      "monster": {},
+      "stone": {},
+      "bee_habitat": {},
+      "mountain": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:black_glazed_terracotta",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:clay",
+        "sea_floor_material": "minecraft:nether_brick",
+        "foundation_material": "minecraft:end_stone"
+      },
+      "beach": {},
+      "plains": {},
+      "animal": {}
+    },
+    "description": {"identifier": "stone_beach"}
+  }
+}

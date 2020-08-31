@@ -1,0 +1,54 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "warped_forest": {},
+      "nether": {},
+      "minecraft:nether_generation_rules": {
+        "target_altitude": 0,
+        "target_weirdness": 0,
+        "target_humidity": 0.5,
+        "weight": 0.375,
+        "target_temperature": 0
+      },
+      "spawn_endermen": {},
+      "overworld_generation": {},
+      "netherwart_forest": {},
+      "frozen": {},
+      "cold": {},
+      "overworld": {},
+      "minecraft:climate": {
+        "blue_spores": 0.25,
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 2,
+        "downfall": 0
+      },
+      "monster": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 1,
+        "top_material": "minecraft:redstone_block",
+        "sea_material": "minecraft:lava",
+        "mid_material": "minecraft:brown_glazed_terracotta",
+        "sea_floor_material": "minecraft:end_rod",
+        "foundation_material": "minecraft:cyan_glazed_terracotta"
+      },
+      "minecraft:surface_material_adjustments": {"adjustments": [{
+        "noise_range": [
+          0.4,
+          1
+        ],
+        "materials": {
+          "top_material": "minecraft:netherrack",
+          "sea_floor_material": "minecraft:netherrack"
+        },
+        "noise_frequency_scale": 0.1
+      }]},
+      "animal": {},
+      "jungle": {}
+    },
+    "description": {"identifier": "warped_forest"}
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "forest": {},
+      "taiga": {},
+      "frozen": {},
+      "minecraft:overworld_height": {"noise_type": "taiga"},
+      "cold": {},
+      "overworld": {},
+      "roofed": {},
+      "nether_wastes": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0.125,
+          0.5
+        ],
+        "temperature": -0.5,
+        "downfall": 0.4
+      },
+      "monster": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:jukebox",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:blackstone",
+        "sea_floor_material": "minecraft:end_rod",
+        "foundation_material": "minecraft:stripped_warped_stem"
+      },
+      "minecraft:overworld_generation_rules": {
+        "generate_for_climates": [[
+          "frozen",
+          1
+        ]],
+        "hills_transformation": "cold_taiga_hills",
+        "mutate_transformation": "cold_taiga_mutated"
+      },
+      "ocean": {},
+      "spawn_magma_cubes": {},
+      "savanna": {},
+      "animal": {}
+    },
+    "description": {"identifier": "cold_taiga"}
+  }
+}

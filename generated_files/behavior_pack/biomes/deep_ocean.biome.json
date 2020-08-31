@@ -1,0 +1,42 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "deep": {},
+      "forest": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:stripped_warped_hyphae",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:blue_ice",
+        "sea_floor_material": "minecraft:smithing_table",
+        "foundation_material": "minecraft:cartography_table"
+      },
+      "minecraft:overworld_generation_rules": {
+        "generate_for_climates": [[
+          "medium",
+          1
+        ]],
+        "hills_transformation": [
+          "plains",
+          "forest"
+        ]
+      },
+      "ocean": {},
+      "taiga": {},
+      "minecraft:overworld_height": {"noise_type": "deep_ocean"},
+      "overworld": {},
+      "lukewarm": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 0.5,
+        "downfall": 0.5
+      },
+      "monster": {}
+    },
+    "description": {"identifier": "deep_ocean"}
+  }
+}

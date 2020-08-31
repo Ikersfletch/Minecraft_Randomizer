@@ -1,0 +1,412 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:jump.static": {},
+      "minecraft:behavior.move_to_water": {
+        "search_range": 16,
+        "search_height": 5,
+        "goal_radius": 0.1,
+        "priority": 4,
+        "search_count": 1
+      },
+      "minecraft:behavior.swim_with_entity": {
+        "state_check_interval": 0.5,
+        "match_direction_threshold": 2,
+        "search_range": 20,
+        "speed_multiplier": 1.5,
+        "entity_types": [{"filters": {
+          "test": "is_family",
+          "subject": "other",
+          "value": "player"
+        }}],
+        "priority": 4,
+        "chance_to_stop": 0.0333,
+        "catch_up_multiplier": 2.5,
+        "success_rate": 0.1,
+        "catch_up_threshold": 12,
+        "stop_distance": 5
+      },
+      "minecraft:physics": {},
+      "minecraft:nameable": {},
+      "minecraft:movement.skip": {},
+      "minecraft:breathable": {
+        "breathes_air": true,
+        "total_supply": 15,
+        "suffocate_time": 0,
+        "breathes_water": true,
+        "generates_bubbles": false
+      },
+      "minecraft:behavior.look_at_player": {
+        "target_distance": 6,
+        "probability": 0.02,
+        "priority": 8
+      },
+      "minecraft:loot": {"table": "loot_tables/entities/pig_saddled.json"},
+      "minecraft:behavior.random_swim": {
+        "xz_dist": 30,
+        "y_dist": 15,
+        "interval": 0,
+        "priority": 7
+      },
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:admire_item": {
+        "duration": 8,
+        "cooldown_after_being_attacked": 20
+      },
+      "minecraft:behavior.squid_flee": {"priority": 2},
+      "minecraft:health": {"value": 30},
+      "minecraft:water_movement": {"drag_factor": 0.9},
+      "minecraft:behavior.panic": {
+        "speed_multiplier": 1.2,
+        "prefer_water": true,
+        "priority": 0
+      },
+      "minecraft:behavior.tempt": {
+        "speed_multiplier": 1.1,
+        "priority": 3,
+        "items": ["seagrass"]
+      },
+      "minecraft:movement.amphibious": {"max_turn": 5},
+      "minecraft:behavior.hurt_by_target": {"priority": 1},
+      "minecraft:bribeable": {"bribe_items": [
+        "fish",
+        "salmon"
+      ]},
+      "minecraft:movement": {"value": 0.1},
+      "minecraft:home": {},
+      "minecraft:damage_sensor": {"triggers": {
+        "deals_damage": true,
+        "damage_multiplier": 2000,
+        "cause": "lightning"
+      }},
+      "minecraft:despawn": {"filters": {"any_of": [
+        {"all_of": [
+          {
+            "test": "is_persistent",
+            "value": false
+          },
+          {
+            "test": "distance_to_nearest_player",
+            "value": 54,
+            "operator": ">"
+          }
+        ]},
+        {"all_of": [
+          {
+            "test": "is_persistent",
+            "value": false
+          },
+          {
+            "test": "inactivity_timer",
+            "subject": "self",
+            "value": 30
+          },
+          {
+            "test": "random_chance",
+            "value": 800
+          },
+          {
+            "test": "distance_to_nearest_player",
+            "value": 32,
+            "operator": ">"
+          }
+        ]}
+      ]}},
+      "minecraft:hurt_on_condition": {"damage_conditions": [{
+        "damage_per_tick": 4,
+        "cause": "lava",
+        "filters": {
+          "test": "in_lava",
+          "subject": "self",
+          "value": true,
+          "operator": "=="
+        }
+      }]},
+      "minecraft:navigation.generic": {
+        "can_walk": true,
+        "can_swim": true,
+        "avoid_damage_blocks": true,
+        "can_sink": false,
+        "can_path_over_water": false,
+        "is_amphibious": true
+      },
+      "minecraft:follow_range": {"value": 1024}
+    },
+    "component_groups": {
+      "minecraft:wants_to_lay_egg": {
+        "minecraft:block_sensor": {
+          "sensor_radius": 16,
+          "on_break": [{
+            "on_block_broken": "important_block_destroyed_event",
+            "block_list": [
+              "minecraft:gold_block",
+              "minecraft:gilded_blackstone",
+              "minecraft:nether_gold_ore",
+              "minecraft:gold_ore",
+              "minecraft:chest",
+              "minecraft:trapped_chest",
+              "minecraft:ender_chest",
+              "minecraft:barrel",
+              "minecraft:shulker_box",
+              "minecraft:undyed_shulker_box"
+            ]
+          }]
+        },
+        "minecraft:behavior.follow_caravan": {
+          "entity_count": 10,
+          "speed_multiplier": 2.1,
+          "entity_types": {"filters": {
+            "test": "is_family",
+            "subject": "other",
+            "value": "llama"
+          }},
+          "priority": 3
+        },
+        "minecraft:inventory": {
+          "inventory_size": 8,
+          "private": true
+        },
+        "minecraft:attack_cooldown": {
+          "attack_cooldown_time": [
+            10,
+            15
+          ],
+          "attack_cooldown_complete_event": {
+            "event": "attack_cooldown_complete_event",
+            "target": "self"
+          }
+        },
+        "minecraft:health": {
+          "max": 10,
+          "value": 10
+        },
+        "minecraft:trusting": {
+          "probability": 0.33,
+          "trust_items": [
+            "fish",
+            "salmon"
+          ],
+          "trust_event": {
+            "event": "minecraft:on_trust",
+            "target": "self"
+          }
+        },
+        "minecraft:behavior.lay_egg": {
+          "on_lay": {
+            "event": "minecraft:laid_egg",
+            "target": "self"
+          },
+          "search_range": 16,
+          "speed_multiplier": 1,
+          "search_height": 4,
+          "goal_radius": 1.5,
+          "priority": 1
+        }
+      },
+      "minecraft:pregnant": {
+        "minecraft:behavior.move_towards_restriction": {
+          "speed_multiplier": 1,
+          "priority": 7
+        },
+        "minecraft:behavior.avoid_block": {
+          "sprint_speed_modifier": 1.1,
+          "tick_interval": 5,
+          "search_range": 8,
+          "avoid_block_sound": "retreat",
+          "search_height": 4,
+          "sound_interval": {
+            "range_min": 2,
+            "range_max": 5
+          },
+          "priority": 9,
+          "target_selection_method": "nearest",
+          "target_blocks": [
+            "minecraft:soul_fire",
+            "minecraft:soul_lantern",
+            "minecraft:soul_torch",
+            "minecraft:item.soul_campfire"
+          ]
+        },
+        "minecraft:behavior.eat_block": {
+          "time_until_eat": 1.8,
+          "priority": 6,
+          "eat_and_replace_block_pairs": [
+            {
+              "replace_block": "dirt",
+              "eat_block": "grass"
+            },
+            {
+              "replace_block": "air",
+              "eat_block": "tallgrass"
+            }
+          ],
+          "on_eat": {
+            "event": "minecraft:on_eat_block",
+            "target": "self"
+          },
+          "success_chance": "query.is_baby ? 0.02 : 0.001"
+        },
+        "minecraft:movement.skip": {},
+        "minecraft:player.level": {
+          "max": 24791,
+          "value": 0
+        },
+        "minecraft:behavior.go_home": {
+          "speed_multiplier": 1,
+          "goal_radius": 4,
+          "interval": 700,
+          "on_home": {
+            "event": "minecraft:go_lay_egg",
+            "target": "self"
+          },
+          "priority": 1
+        },
+        "minecraft:behavior.player_ride_tamed": {}
+      },
+      "minecraft:baby": {
+        "minecraft:collision_box": {
+          "width": 0.6,
+          "height": 0.2
+        },
+        "minecraft:behavior.move_to_water": {
+          "search_range": 15,
+          "search_height": 5,
+          "goal_radius": 0.1,
+          "priority": 1
+        },
+        "minecraft:is_baby": {},
+        "minecraft:behavior.take_flower": {"priority": 9},
+        "minecraft:skin_id": {"value": 3},
+        "minecraft:ageable": {
+          "duration": 1200,
+          "drop_items": ["turtle_shell_piece"],
+          "grow_up": {
+            "event": "minecraft:ageable_grow_up",
+            "target": "self"
+          },
+          "feed_items": ["seagrass"]
+        },
+        "minecraft:scale": {"value": 0.16},
+        "minecraft:angry": {
+          "duration": 10,
+          "calm_event": {
+            "event": "minecraft:on_calm",
+            "target": "self"
+          }
+        },
+        "minecraft:type_family": {"family": [
+          "villager",
+          "priest",
+          "cleric",
+          "mob"
+        ]},
+        "minecraft:attack": {
+          "damage": 4,
+          "effect_name": "wither",
+          "effect_duration": 10
+        },
+        "minecraft:behavior.look_at_target": {"priority": 5},
+        "minecraft:underwater_movement": {"value": 0.06}
+      },
+      "minecraft:adult": {
+        "minecraft:behavior.move_to_lava": {
+          "search_range": 16,
+          "search_height": 10,
+          "goal_radius": 0.9,
+          "priority": 7,
+          "search_count": 30
+        },
+        "minecraft:behavior.breed": {
+          "speed_multiplier": 1,
+          "priority": 2
+        },
+        "minecraft:behavior.pickup_items": {
+          "can_pickup_to_hand_or_equipment": false,
+          "speed_multiplier": 0.5,
+          "goal_radius": 2,
+          "max_dist": 3,
+          "priority": 4
+        },
+        "minecraft:timer": {
+          "looping": false,
+          "time_down_event": {
+            "event": "find_hive_timeout",
+            "target": "self"
+          },
+          "time": 180
+        },
+        "minecraft:type_family": {"family": [
+          "turtle",
+          "mob"
+        ]},
+        "minecraft:underwater_movement": {"value": 0.12},
+        "minecraft:collision_box": {
+          "width": 1.2,
+          "height": 0.4
+        },
+        "minecraft:breedable": {
+          "breeds_with": {
+            "baby_type": "minecraft:turtle",
+            "mate_type": "minecraft:turtle",
+            "breed_event": {
+              "event": "minecraft:become_pregnant",
+              "target": "self"
+            }
+          },
+          "breed_items": ["seagrass"],
+          "require_tame": false,
+          "causes_pregnancy": true
+        },
+        "minecraft:input_ground_controlled": {},
+        "minecraft:experience_reward": {
+          "on_death": "query.last_hit_by_player ? Math.Random(1,3) : 0",
+          "on_bred": "Math.Random(1,7)"
+        },
+        "minecraft:loot": {"table": "loot_tables/entities/sea_turtle.json"},
+        "minecraft:behavior.move_to_land": {
+          "search_range": 16,
+          "search_height": 5,
+          "goal_radius": 0.5,
+          "priority": 6
+        },
+        "minecraft:behavior.random_stroll": {
+          "interval": 100,
+          "priority": 9
+        }
+      }
+    },
+    "description": {
+      "identifier": "minecraft:turtle",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "events": {
+      "minecraft:entity_born": {"add": {"component_groups": ["minecraft:baby"]}},
+      "minecraft:laid_egg": {"remove": {"component_groups": ["minecraft:wants_to_lay_egg"]}},
+      "minecraft:entity_spawned": {"randomize": [
+        {
+          "add": {"component_groups": ["minecraft:adult"]},
+          "weight": 9
+        },
+        {
+          "add": {"component_groups": ["minecraft:baby"]},
+          "weight": 1
+        }
+      ]},
+      "minecraft:ageable_grow_up": {
+        "add": {"component_groups": ["minecraft:adult"]},
+        "remove": {"component_groups": ["minecraft:baby"]}
+      },
+      "minecraft:become_pregnant": {"add": {"component_groups": ["minecraft:pregnant"]}},
+      "minecraft:go_lay_egg": {
+        "add": {"component_groups": ["minecraft:wants_to_lay_egg"]},
+        "remove": {"component_groups": ["minecraft:pregnant"]}
+      }
+    }
+  }
+}

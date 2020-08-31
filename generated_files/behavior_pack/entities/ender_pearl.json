@@ -1,0 +1,130 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:physics": {},
+      "minecraft:behavior.swell": {
+        "start_distance": 2.5,
+        "priority": 2,
+        "stop_distance": 6
+      },
+      "minecraft:projectile": {
+        "angle_offset": 0,
+        "inertia": 1,
+        "gravity": 0.025,
+        "liquid_inertia": 1,
+        "on_hit": {
+          "remove_on_hit": {},
+          "teleport_owner": {},
+          "spawn_chance": {
+            "first_spawn_count": 1,
+            "spawn_definition": "minecraft:endermite",
+            "first_spawn_percent_chance": 5
+          }
+        },
+        "power": 1.5
+      },
+      "minecraft:movement.fly": {},
+      "minecraft:behavior.open_door": {
+        "priority": 6,
+        "close_door_after": true
+      },
+      "minecraft:water_movement": {"drag_factor": 0.9},
+      "minecraft:behavior.look_at_player": {
+        "probability": 0.02,
+        "look_distance": 6,
+        "priority": 7
+      },
+      "minecraft:behavior.flee_sun": {
+        "speed_multiplier": 1,
+        "priority": 2
+      },
+      "minecraft:collision_box": {
+        "width": 0.25,
+        "height": 0.25
+      },
+      "minecraft:loot": {"table": "loot_tables/empty.json"},
+      "minecraft:rail_movement": {},
+      "minecraft:dweller": {
+        "update_interval_base": 60,
+        "can_find_poi": true,
+        "first_founding_reward": 5,
+        "preferred_profession": "toolsmith",
+        "dwelling_type": "village",
+        "update_interval_variant": 40,
+        "can_migrate": true,
+        "dweller_role": "inhabitant"
+      },
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      }
+    },
+    "component_groups": {"minecraft:no_spawn": {
+      "minecraft:movement.hover": {},
+      "minecraft:managed_wandering_trader": {},
+      "minecraft:burns_in_daylight": {},
+      "minecraft:color": {"value": 0},
+      "minecraft:fire_immune": {},
+      "minecraft:projectile": {
+        "angle_offset": 0,
+        "inertia": 1,
+        "gravity": 0.025,
+        "liquid_inertia": 1,
+        "on_hit": {
+          "remove_on_hit": {},
+          "teleport_owner": {}
+        },
+        "power": 1.5
+      },
+      "minecraft:interact": {"interactions": [{
+        "use_item": false,
+        "interact_text": "action.interact.shear",
+        "spawn_items": {"table": "loot_tables/entities/sheep_shear.json"},
+        "cooldown": 2.5,
+        "hurt_item": 1,
+        "play_sounds": "shear",
+        "on_interact": {
+          "filters": {"all_of": [
+            {
+              "test": "has_equipment",
+              "subject": "other",
+              "domain": "hand",
+              "value": "shears"
+            },
+            {
+              "test": "is_family",
+              "subject": "other",
+              "value": "player"
+            },
+            {
+              "test": "has_component",
+              "value": "minecraft:is_baby",
+              "operator": "!="
+            },
+            {
+              "test": "has_component",
+              "value": "minecraft:is_dyeable"
+            }
+          ]},
+          "event": "minecraft:on_sheared",
+          "target": "self"
+        }
+      }]}
+    }},
+    "description": {
+      "identifier": "minecraft:ender_pearl",
+      "is_spawnable": false,
+      "is_summonable": false,
+      "is_experimental": false
+    },
+    "events": {"minecraft:entity_spawned": {"sequence": [{
+      "add": {"component_groups": ["minecraft:no_spawn"]},
+      "filters": {
+        "test": "is_game_rule",
+        "domain": "domobspawning",
+        "value": false
+      }
+    }]}}
+  }
+}

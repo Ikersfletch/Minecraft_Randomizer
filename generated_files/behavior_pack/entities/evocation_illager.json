@@ -1,0 +1,380 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:jump.static": {},
+      "minecraft:physics": {},
+      "minecraft:nameable": {},
+      "minecraft:behavior.admire_item": {
+        "on_admire_item_stop": {
+          "event": "admire_item_stopped_event",
+          "target": "self"
+        },
+        "on_admire_item_start": {
+          "event": "admire_item_started_event",
+          "target": "self"
+        },
+        "sound_interval": {
+          "range_min": 2,
+          "range_max": 5
+        },
+        "priority": 2,
+        "admire_item_sound": "admire"
+      },
+      "minecraft:can_climb": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:type_family": {"family": [
+        "evocation_illager",
+        "monster",
+        "illager",
+        "mob"
+      ]},
+      "minecraft:behavior.look_at_player": {
+        "probability": 1,
+        "look_distance": 3,
+        "priority": 9
+      },
+      "minecraft:behavior.send_event": {
+        "event_choices": [{
+          "cooldown_time": 5,
+          "sequence": [{
+            "base_delay": 2,
+            "sound_event": "prepare.wololo",
+            "event": "wololo"
+          }],
+          "particle_color": "#FFB38033",
+          "min_activation_range": 0,
+          "weight": 3,
+          "start_sound_event": "cast.spell",
+          "filters": {"all_of": [
+            {
+              "test": "is_family",
+              "subject": "other",
+              "value": "sheep"
+            },
+            {
+              "test": "is_color",
+              "subject": "other",
+              "value": "blue"
+            }
+          ]},
+          "cast_duration": 3,
+          "max_activation_range": 16
+        }],
+        "priority": 3
+      },
+      "minecraft:behavior.nearest_attackable_target": {
+        "entity_types": [
+          {
+            "max_dist": 20,
+            "filters": {"any_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "player"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "snowgolem"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "irongolem"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "wandering_trader"
+              }
+            ]}
+          },
+          {
+            "max_dist": 20,
+            "filters": {"all_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "villager"
+              },
+              {
+                "test": "has_component",
+                "subject": "other",
+                "value": "minecraft:is_baby",
+                "operator": "!="
+              }
+            ]}
+          }
+        ],
+        "must_see": true,
+        "priority": 2
+      },
+      "minecraft:on_hurt_by_player": {
+        "event": "minecraft:ranged_mode",
+        "target": "self"
+      },
+      "minecraft:navigation.walk": {
+        "avoid_water": true,
+        "can_open_doors": true,
+        "can_pass_doors": true,
+        "can_path_over_water": true
+      },
+      "minecraft:behavior.ranged_attack": {
+        "attack_radius": 64,
+        "charge_shoot_trigger": 2,
+        "charge_charged_trigger": 1,
+        "priority": 2
+      },
+      "minecraft:behavior.avoid_mob_type": {
+        "entity_types": [{
+          "max_dist": 8,
+          "filters": {
+            "test": "is_family",
+            "subject": "other",
+            "value": "player"
+          },
+          "walk_speed_multiplier": 0.6,
+          "sprint_speed_multiplier": 1
+        }],
+        "priority": 5
+      },
+      "minecraft:loot": {"table": "loot_tables/entities/phantom.json"},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:behavior.random_stroll": {
+        "speed_multiplier": 0.6,
+        "priority": 8
+      },
+      "minecraft:behavior.summon_entity": {
+        "summon_choices": [
+          {
+            "cooldown_time": 5,
+            "sequence": [
+              {
+                "base_delay": 1,
+                "entity_type": "minecraft:evocation_fang",
+                "shape": "circle",
+                "size": 1.5,
+                "entity_lifespan": 1.1,
+                "sound_event": "prepare.attack",
+                "num_entities_spawned": 5,
+                "target": "self",
+                "delay_per_summon": 0
+              },
+              {
+                "base_delay": 0.15,
+                "entity_type": "minecraft:evocation_fang",
+                "shape": "circle",
+                "size": 2.5,
+                "entity_lifespan": 1.1,
+                "num_entities_spawned": 8,
+                "target": "self",
+                "delay_per_summon": 0
+              }
+            ],
+            "particle_color": "#FF664D59",
+            "min_activation_range": 0,
+            "weight": 3,
+            "start_sound_event": "cast.spell",
+            "cast_duration": 2,
+            "max_activation_range": 3
+          },
+          {
+            "cooldown_time": 5,
+            "sequence": [{
+              "base_delay": 1,
+              "entity_type": "minecraft:evocation_fang",
+              "shape": "line",
+              "size": 20,
+              "entity_lifespan": 1.1,
+              "num_entities_spawned": 16,
+              "target": "self",
+              "delay_per_summon": 0.05
+            }],
+            "particle_color": "#FF664D59",
+            "min_activation_range": 3,
+            "weight": 3,
+            "start_sound_event": "cast.spell",
+            "cast_duration": 2
+          },
+          {
+            "cooldown_time": 17,
+            "sequence": [{
+              "base_delay": 5,
+              "entity_type": "minecraft:vex",
+              "summon_cap_radius": 16,
+              "shape": "circle",
+              "summon_cap": 8,
+              "size": 1,
+              "sound_event": "prepare.summon",
+              "num_entities_spawned": 3,
+              "target": "self"
+            }],
+            "particle_color": "#FFB3B3CC",
+            "weight": 1,
+            "cast_duration": 5
+          }
+        ],
+        "priority": 2
+      },
+      "minecraft:health": {
+        "max": 24,
+        "value": 24
+      },
+      "minecraft:behavior.look_at_entity": {
+        "look_distance": 8,
+        "filters": {
+          "test": "is_family",
+          "subject": "other",
+          "value": "mob"
+        },
+        "priority": 10
+      },
+      "minecraft:behavior.hurt_by_target": {"priority": 1},
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 1.9
+      },
+      "minecraft:persistent": {},
+      "minecraft:movement": {"value": 0.5},
+      "minecraft:behavior.float": {"priority": 0},
+      "minecraft:experience_reward": {"on_death": "10"},
+      "minecraft:skin_id": {"value": 1},
+      "minecraft:hurt_on_condition": {"damage_conditions": [{
+        "damage_per_tick": 4,
+        "cause": "lava",
+        "filters": {
+          "test": "in_lava",
+          "subject": "self",
+          "value": true,
+          "operator": "=="
+        }
+      }]},
+      "minecraft:trust": {},
+      "minecraft:break_blocks": {"breakable_blocks": [
+        "bamboo",
+        "bamboo_sapling",
+        "beetroot",
+        "brown_mushroom",
+        "carrots",
+        "carved_pumpkin",
+        "chorus_flower",
+        "chorus_plant",
+        "deadbush",
+        "double_plant",
+        "leaves",
+        "leaves2",
+        "lit_pumpkin",
+        "melon_block",
+        "melon_stem",
+        "potatoes",
+        "pumpkin",
+        "pumpkin_stem",
+        "red_flower",
+        "red_mushroom",
+        "crimson_fungus",
+        "warped_fungus",
+        "reeds",
+        "sapling",
+        "snow_layer",
+        "sweet_berry_bush",
+        "tallgrass",
+        "turtle_egg",
+        "vine",
+        "waterlily",
+        "wheat",
+        "yellow_flower"
+      ]},
+      "minecraft:follow_range": {"value": 64}
+    },
+    "component_groups": {
+      "minecraft:raid_configuration": {
+        "minecraft:jump.static": {},
+        "minecraft:experience_reward": {"on_death": "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,3)) : 0"},
+        "minecraft:behavior.swell": {
+          "start_distance": 2.5,
+          "priority": 2,
+          "stop_distance": 6
+        },
+        "minecraft:transformation": {
+          "into": "minecraft:witch",
+          "delay": 0.5
+        },
+        "minecraft:ambient_sound_interval": {
+          "range": 4,
+          "event_name": "ambient.in.raid",
+          "value": 2
+        },
+        "minecraft:behavior.scared": {
+          "sound_interval": 20,
+          "priority": 1
+        },
+        "minecraft:dweller": {
+          "update_interval_base": 60,
+          "can_find_poi": false,
+          "first_founding_reward": 0,
+          "dwelling_type": "village",
+          "update_interval_variant": 40,
+          "can_migrate": false,
+          "dweller_role": "hostile"
+        },
+        "minecraft:behavior.look_at_trading_player": {"priority": 7},
+        "minecraft:behavior.move_to_village": {
+          "speed_multiplier": 0.7,
+          "priority": 6
+        }
+      },
+      "minecraft:celebrate": {
+        "minecraft:behavior.celebrate": {
+          "duration": 30,
+          "jump_interval": {
+            "range_min": 1,
+            "range_max": 3.5
+          },
+          "celebration_sound": "celebrate",
+          "sound_interval": {
+            "range_min": 2,
+            "range_max": 7
+          },
+          "on_celebration_end_event": {
+            "event": "minecraft:stop_celebrating",
+            "target": "self"
+          },
+          "priority": 5
+        },
+        "minecraft:behavior.move_to_land": {
+          "search_range": 16,
+          "search_height": 5,
+          "goal_radius": 0.5,
+          "priority": 6
+        },
+        "minecraft:sittable": {},
+        "minecraft:is_hidden_when_invisible": {},
+        "minecraft:behavior.follow_mob": {
+          "search_range": 20,
+          "speed_multiplier": 1,
+          "priority": 3,
+          "stop_distance": 3
+        }
+      }
+    },
+    "description": {
+      "identifier": "minecraft:evocation_illager",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "events": {
+      "minecraft:spawn_for_raid": {"add": {"component_groups": ["minecraft:raid_configuration"]}},
+      "minecraft:stop_celebrating": {"remove": {"component_groups": ["minecraft:celebrate"]}},
+      "minecraft:start_celebrating": {"add": {"component_groups": ["minecraft:celebrate"]}}
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:aggregate_feature": {
+    "features": [
+      "minecraft:optional_log_brown_mushroom_feature",
+      "minecraft:red_mushroom_feature"
+    ],
+    "description": {"identifier": "minecraft:select_log_mushroom_feature"},
+    "early_out": "first_success"
+  }
+}

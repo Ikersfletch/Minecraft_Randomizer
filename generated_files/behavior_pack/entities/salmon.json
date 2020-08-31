@@ -1,0 +1,401 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:behavior.swim_idle": {
+        "idle_time": 5,
+        "priority": 5,
+        "success_rate": 0.1
+      },
+      "minecraft:behavior.swim_with_entity": {
+        "state_check_interval": 0.5,
+        "match_direction_threshold": 2,
+        "search_range": 20,
+        "speed_multiplier": 1.5,
+        "entity_types": [{"filters": {
+          "test": "is_family",
+          "subject": "other",
+          "value": "player"
+        }}],
+        "priority": 4,
+        "chance_to_stop": 0.0333,
+        "catch_up_multiplier": 2.5,
+        "success_rate": 0.1,
+        "catch_up_threshold": 12,
+        "stop_distance": 5
+      },
+      "minecraft:physics": {"has_gravity": false},
+      "minecraft:nameable": {},
+      "minecraft:knockback_resistance": {"value": 0.5},
+      "minecraft:annotation.open_door": {},
+      "minecraft:behavior.swim_wander": {
+        "wander_time": 5,
+        "look_ahead": 5,
+        "speed_multiplier": 0.014,
+        "interval": 0.0166,
+        "priority": 4
+      },
+      "minecraft:movement.glide": {
+        "speed_when_turning": 0.2,
+        "start_speed": 0.1
+      },
+      "minecraft:breathable": {
+        "breathes_air": false,
+        "total_supply": 15,
+        "suffocate_time": 0,
+        "breathes_water": true
+      },
+      "minecraft:type_family": {"family": [
+        "salmon",
+        "fish"
+      ]},
+      "minecraft:behavior.avoid_mob_type": {
+        "entity_types": [{
+          "max_dist": 3,
+          "filters": {
+            "test": "is_family",
+            "subject": "other",
+            "value": "player"
+          },
+          "max_flee": 10,
+          "walk_speed_multiplier": 1.5,
+          "sprint_speed_multiplier": 2
+        }],
+        "priority": 1
+      },
+      "minecraft:behavior.move_towards_restriction": {
+        "speed_multiplier": 1,
+        "priority": 7
+      },
+      "minecraft:loot": {"table": "loot_tables/entities/salmon_large.json"},
+      "minecraft:behavior.random_swim": {
+        "xz_dist": 16,
+        "speed_multiplier": 1,
+        "y_dist": 4,
+        "interval": 0,
+        "priority": 3
+      },
+      "minecraft:flocking": {
+        "innner_cohesion_threshold": 1.5,
+        "block_weight": 0.75,
+        "cohesion_weight": 2.25,
+        "low_flock_limit": 4,
+        "high_flock_limit": 8,
+        "block_distance": 1,
+        "max_height": 4,
+        "separation_weight": 0.65,
+        "match_variants": false,
+        "loner_chance": 0.1,
+        "separation_threshold": 0.15,
+        "goal_weight": 2,
+        "breach_influence": 7,
+        "min_height": 4,
+        "cohesion_threshold": 1.5,
+        "use_center_of_mass": false,
+        "influence_radius": 3,
+        "in_water": true
+      },
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:addrider": {"entity_type": "minecraft:skeleton.wither"},
+      "minecraft:behavior.follow_owner": {
+        "start_distance": 10,
+        "speed_multiplier": 1,
+        "priority": 4,
+        "stop_distance": 2
+      },
+      "minecraft:behavior.random_sitting": {
+        "min_sit_time": 15,
+        "cooldown": 25,
+        "start_chance": 0.02,
+        "stop_chance": 0.2,
+        "priority": 6
+      },
+      "minecraft:block_sensor": {
+        "sensor_radius": 16,
+        "on_break": [{
+          "on_block_broken": "important_block_destroyed_event",
+          "block_list": [
+            "minecraft:gold_block",
+            "minecraft:chest",
+            "minecraft:ender_chest",
+            "minecraft:barrel",
+            "minecraft:shulker_box",
+            "minecraft:undyed_shulker_box"
+          ]
+        }]
+      },
+      "minecraft:behavior.leap_at_target": {
+        "must_be_on_ground": false,
+        "yd": 0.4,
+        "priority": 4
+      },
+      "minecraft:behavior.barter": {"priority": 3},
+      "minecraft:behavior.look_at_entity": {
+        "angle_of_view_horizontal": 45,
+        "look_distance": 8,
+        "filters": {
+          "test": "is_family",
+          "subject": "other",
+          "value": "mob"
+        },
+        "priority": 10
+      },
+      "minecraft:underwater_movement": {"value": 0.12},
+      "minecraft:collision_box": {
+        "width": 0.5,
+        "height": 0.5
+      },
+      "minecraft:movement": {"value": 0.12},
+      "minecraft:despawn": {"despawn_from_distance": {
+        "min_distance": 32,
+        "max_distance": 40
+      }},
+      "minecraft:experience_reward": {"on_death": "query.last_hit_by_player ? Math.Random(1,3) : 0"},
+      "minecraft:behavior.avoid_block": {
+        "sprint_speed_modifier": 1.1,
+        "tick_interval": 5,
+        "search_range": 8,
+        "avoid_block_sound": "retreat",
+        "search_height": 4,
+        "sound_interval": {
+          "range_min": 2,
+          "range_max": 5
+        },
+        "priority": 9,
+        "target_selection_method": "nearest",
+        "target_blocks": [
+          "minecraft:soul_fire",
+          "minecraft:soul_lantern",
+          "minecraft:soul_torch",
+          "minecraft:item.soul_campfire"
+        ]
+      },
+      "minecraft:hurt_on_condition": {"damage_conditions": [{
+        "damage_per_tick": 4,
+        "cause": "lava",
+        "filters": {
+          "test": "in_lava",
+          "subject": "self",
+          "value": true,
+          "operator": "=="
+        }
+      }]},
+      "minecraft:movement.sway": {"sway_amplitude": 0},
+      "minecraft:scaffolding_climber": {},
+      "minecraft:flying_speed": {"value": 0.15},
+      "minecraft:horse.jump_strength": {"value": {
+        "range_min": 0.4,
+        "range_max": 1
+      }},
+      "minecraft:mob_effect": {
+        "entity_filter": {"any_of": [
+          {
+            "test": "is_family",
+            "subject": "other",
+            "value": "player"
+          },
+          {
+            "test": "is_family",
+            "subject": "other",
+            "value": "monster"
+          }
+        ]},
+        "mob_effect": "poison",
+        "effect_range": 0.2,
+        "effect_time": 10
+      },
+      "minecraft:navigation.generic": {
+        "can_walk": false,
+        "can_swim": true,
+        "can_sink": false,
+        "can_path_over_water": false,
+        "can_breach": false,
+        "is_amphibious": false
+      },
+      "minecraft:economy_trade_table": {
+        "new_screen": true,
+        "persist_trades": true,
+        "display_name": "entity.villager.fletcher",
+        "table": "trading/economy_trades/fletcher_trades.json"
+      }
+    },
+    "component_groups": {
+      "scale_normal": {
+        "minecraft:behavior.hold_ground": {
+          "broadcast": true,
+          "broadcast_range": 8,
+          "min_radius": 10,
+          "priority": 5,
+          "within_radius_event": {
+            "event": "minecraft:ranged_mode",
+            "target": "self"
+          }
+        },
+        "minecraft:giveable": {"triggers": {
+          "on_give": {
+            "event": "minecraft:on_calm",
+            "target": "self"
+          },
+          "cooldown": 3,
+          "items": [
+            "bamboo",
+            "cake"
+          ]
+        }},
+        "minecraft:loot": {"table": "loot_tables/entities/salmon_normal.json"},
+        "minecraft:behavior.breed": {
+          "speed_multiplier": 1,
+          "priority": 3
+        },
+        "minecraft:behavior.defend_village_target": {
+          "must_reach": true,
+          "entity_types": {"filters": {"any_of": [
+            {
+              "test": "is_family",
+              "subject": "other",
+              "value": "mob"
+            },
+            {
+              "test": "is_family",
+              "subject": "other",
+              "value": "player"
+            }
+          ]}},
+          "priority": 1,
+          "attack_chance": 0.05
+        },
+        "minecraft:health": {
+          "max": 6,
+          "value": 6
+        },
+        "minecraft:movement.fly": {},
+        "minecraft:scale": {"value": 1},
+        "minecraft:healable": {"items": [
+          {
+            "item": "wheat",
+            "heal_amount": 2
+          },
+          {
+            "item": "sugar",
+            "heal_amount": 1
+          },
+          {
+            "item": "hay_block",
+            "heal_amount": 20
+          },
+          {
+            "item": "apple",
+            "heal_amount": 3
+          },
+          {
+            "item": "golden_carrot",
+            "heal_amount": 4
+          },
+          {
+            "item": "golden_apple",
+            "heal_amount": 10
+          },
+          {
+            "item": "appleEnchanted",
+            "heal_amount": 10
+          }
+        ]}
+      },
+      "scale_large": {
+        "minecraft:loot": {"table": "loot_tables/entities/salmon_large.json"},
+        "minecraft:nameable": {},
+        "minecraft:behavior.eat_block": {
+          "time_until_eat": 1.8,
+          "priority": 6,
+          "eat_and_replace_block_pairs": [
+            {
+              "replace_block": "dirt",
+              "eat_block": "grass"
+            },
+            {
+              "replace_block": "air",
+              "eat_block": "tallgrass"
+            }
+          ],
+          "on_eat": {
+            "event": "minecraft:on_eat_block",
+            "target": "self"
+          },
+          "success_chance": "query.is_baby ? 0.02 : 0.001"
+        },
+        "minecraft:health": {
+          "max": 6,
+          "value": 6
+        },
+        "minecraft:sittable": {},
+        "minecraft:scale": {"value": 1.5},
+        "minecraft:angry": {
+          "duration": 25,
+          "broadcast_anger": true,
+          "calm_event": {
+            "event": "minecraft:on_calm",
+            "target": "self"
+          },
+          "broadcast_range": 16
+        }
+      },
+      "scale_small": {
+        "minecraft:damage_sensor": {"triggers": {
+          "deals_damage": false,
+          "cause": "fall"
+        }},
+        "minecraft:behavior.stroll_towards_village": {
+          "cooldown_time": 10,
+          "search_range": 32,
+          "speed_multiplier": 1,
+          "goal_radius": 3,
+          "start_chance": 0.005,
+          "priority": 11
+        },
+        "minecraft:loot": {"table": "loot_tables/entities/salmon_normal.json"},
+        "minecraft:health": {
+          "max": 6,
+          "value": 6
+        },
+        "minecraft:rail_movement": {},
+        "minecraft:scale": {"value": 0.5},
+        "minecraft:behavior.float_wander": {
+          "must_reach": true,
+          "priority": 2
+        }
+      }
+    },
+    "description": {
+      "identifier": "minecraft:salmon",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "events": {"minecraft:entity_spawned": {"randomize": [
+      {
+        "add": {"component_groups": [
+          "adult",
+          "scale_small"
+        ]},
+        "weight": 30
+      },
+      {
+        "add": {"component_groups": [
+          "adult",
+          "scale_normal"
+        ]},
+        "weight": 50
+      },
+      {
+        "add": {"component_groups": [
+          "adult",
+          "scale_large"
+        ]},
+        "weight": 15
+      }
+    ]}}
+  }
+}

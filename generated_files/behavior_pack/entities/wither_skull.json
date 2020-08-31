@@ -1,0 +1,308 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:physics": {},
+      "minecraft:area_attack": {
+        "damage_per_tick": 2,
+        "damage_range": 0.2,
+        "entity_filter": {"any_of": [
+          {
+            "test": "is_family",
+            "subject": "other",
+            "value": "player"
+          },
+          {
+            "test": "is_family",
+            "subject": "other",
+            "value": "monster"
+          }
+        ]},
+        "cause": "contact"
+      },
+      "minecraft:behavior.pickup_items": {
+        "cooldown_after_being_attacked": 20,
+        "can_pickup_any_item": false,
+        "speed_multiplier": 0.8,
+        "goal_radius": 2,
+        "max_dist": 10,
+        "pickup_based_on_chance": false,
+        "priority": 6
+      },
+      "minecraft:projectile": {
+        "shoot_target": false,
+        "inertia": 1,
+        "uncertainty_base": 7.5,
+        "uncertainty_multiplier": 1,
+        "hit_sound": "bow.hit",
+        "offset": [
+          0,
+          -0.1,
+          0
+        ],
+        "gravity": 0,
+        "liquid_inertia": 1,
+        "on_hit": {
+          "definition_event": {
+            "event_trigger": {
+              "event": "minecraft:explode",
+              "target": "self"
+            },
+            "affect_projectile": true
+          },
+          "mob_effect": {
+            "durationhard": 800,
+            "effect": "wither",
+            "amplifier": 1,
+            "durationeasy": 0,
+            "durationnormal": 200
+          }
+        },
+        "shoot_sound": "bow",
+        "anchor": 1,
+        "power": 1.2
+      },
+      "minecraft:behavior.tempt": {
+        "speed_multiplier": 0.5,
+        "within_radius": 16,
+        "priority": 5,
+        "items": [
+          "fish",
+          "salmon"
+        ]
+      },
+      "minecraft:behavior.follow_target_captain": {
+        "follow_distance": 5,
+        "speed_multiplier": 0.8,
+        "within_radius": 64,
+        "priority": 5
+      },
+      "minecraft:barter": {
+        "cooldown_after_being_attacked": 20,
+        "barter_table": "loot_tables/entities/piglin_barter.json"
+      },
+      "minecraft:behavior.equip_item": {"priority": 2},
+      "minecraft:behavior.hurt_by_target": {"priority": 1},
+      "minecraft:collision_box": {
+        "width": 0.25,
+        "height": 0.25
+      },
+      "minecraft:behavior.hide": {
+        "duration": 30,
+        "speed_multiplier": 0.8,
+        "poi_type": "bed",
+        "priority": 0
+      },
+      "minecraft:group_size": {
+        "filters": {"all_of": [
+          {
+            "test": "has_component",
+            "value": "minecraft:is_baby",
+            "operator": "!="
+          },
+          {
+            "test": "is_family",
+            "value": "hoglin"
+          }
+        ]},
+        "radius": 32
+      },
+      "minecraft:loot": {"table": "loot_tables/entities/skeleton.json"},
+      "minecraft:movement.sway": {"sway_amplitude": 0},
+      "minecraft:mob_effect": {
+        "entity_filter": {"any_of": [
+          {
+            "test": "is_family",
+            "subject": "other",
+            "value": "player"
+          },
+          {
+            "test": "is_family",
+            "subject": "other",
+            "value": "monster"
+          }
+        ]},
+        "mob_effect": "poison",
+        "effect_range": 0.2,
+        "effect_time": 10
+      },
+      "minecraft:flocking": {
+        "innner_cohesion_threshold": 1.5,
+        "block_weight": 0.85,
+        "cohesion_weight": 2.75,
+        "low_flock_limit": 4,
+        "high_flock_limit": 8,
+        "block_distance": 2,
+        "max_height": 6,
+        "separation_weight": 0.65,
+        "match_variants": true,
+        "loner_chance": 0.1,
+        "separation_threshold": 0.15,
+        "goal_weight": 2,
+        "breach_influence": 7,
+        "min_height": 1.5,
+        "cohesion_threshold": 1.5,
+        "use_center_of_mass": false,
+        "influence_radius": 3,
+        "in_water": true
+      },
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:behavior.nearest_prioritized_attackable_target": {
+        "persist_time": 2,
+        "entity_types": [
+          {
+            "max_dist": 12,
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "player"
+            },
+            "priority": 0
+          },
+          {
+            "max_dist": 12,
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "wither"
+            },
+            "priority": 1
+          }
+        ],
+        "within_radius": 12,
+        "must_see": true,
+        "priority": 3
+      },
+      "minecraft:npc": {"npc_data": {
+        "picker_offsets": {
+          "scale": [
+            1.7,
+            1.7,
+            1.7
+          ],
+          "translate": [
+            0,
+            20,
+            0
+          ]
+        },
+        "portrait_offsets": {
+          "scale": [
+            1.75,
+            1.75,
+            1.75
+          ],
+          "translate": [
+            -7,
+            50,
+            0
+          ]
+        },
+        "skin_list": [
+          {"variant": 0},
+          {"variant": 1},
+          {"variant": 2},
+          {"variant": 3},
+          {"variant": 4},
+          {"variant": 5},
+          {"variant": 6},
+          {"variant": 7},
+          {"variant": 8},
+          {"variant": 9},
+          {"variant": 10},
+          {"variant": 11},
+          {"variant": 12},
+          {"variant": 13},
+          {"variant": 14},
+          {"variant": 15},
+          {"variant": 16},
+          {"variant": 17},
+          {"variant": 18},
+          {"variant": 19}
+        ]
+      }}
+    },
+    "component_groups": {"minecraft:exploding": {
+      "minecraft:trade_table": {
+        "convert_trades_economy": true,
+        "display_name": "entity.villager.butcher",
+        "table": "trading/butcher_trades.json"
+      },
+      "minecraft:behavior.nearest_attackable_target": {
+        "entity_types": [
+          {
+            "max_dist": 16,
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "player"
+            }
+          },
+          {
+            "max_dist": 16,
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "irongolem"
+            }
+          },
+          {
+            "max_dist": 16,
+            "filters": {"all_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "baby_turtle"
+              },
+              {
+                "test": "in_water",
+                "subject": "other",
+                "value": true,
+                "operator": "!="
+              }
+            ]}
+          }
+        ],
+        "must_see": true,
+        "priority": 2,
+        "reselect_targets": true
+      },
+      "minecraft:on_hurt_by_player": {
+        "event": "minecraft:ranged_mode",
+        "target": "self"
+      },
+      "minecraft:explode": {
+        "fuse_lit": true,
+        "fuse_length": 0,
+        "power": 1,
+        "causes_fire": false,
+        "destroy_affected_by_griefing": true
+      },
+      "minecraft:behavior.slime_random_direction": {
+        "min_change_direction_time": 2,
+        "turn_range": 360,
+        "add_random_time_range": 3,
+        "priority": 4
+      },
+      "minecraft:behavior.mingle": {
+        "duration": 30,
+        "mingle_distance": 2,
+        "cooldown_time": 10,
+        "mingle_partner_type": "minecraft:villager_v2",
+        "speed_multiplier": 0.5,
+        "priority": 7
+      }
+    }},
+    "description": {
+      "identifier": "minecraft:wither_skull",
+      "is_spawnable": false,
+      "is_summonable": false,
+      "is_experimental": false
+    },
+    "events": {"minecraft:explode": {"add": {"component_groups": ["minecraft:exploding"]}}}
+  }
+}

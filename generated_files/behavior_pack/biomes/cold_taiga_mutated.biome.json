@@ -1,0 +1,39 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "mutated": {},
+      "forest": {},
+      "taiga": {},
+      "overworld_generation": {},
+      "spawn_endermen": {},
+      "minecraft:overworld_height": {"noise_params": [
+        0.3,
+        0.4
+      ]},
+      "cold": {},
+      "overworld": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": -0.5,
+        "downfall": 0.4
+      },
+      "monster": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:cyan_glazed_terracotta",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:diamond_block",
+        "sea_floor_material": "minecraft:white_glazed_terracotta",
+        "foundation_material": "minecraft:stripped_spruce_log"
+      },
+      "ocean": {},
+      "plateau": {},
+      "animal": {}
+    },
+    "description": {"identifier": "cold_taiga_mutated"}
+  }
+}

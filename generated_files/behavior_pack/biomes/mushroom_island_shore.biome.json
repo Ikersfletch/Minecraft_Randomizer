@@ -1,0 +1,31 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:end_rod",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:end_bricks",
+        "sea_floor_material": "minecraft:soul_sand",
+        "foundation_material": "minecraft:gray_glazed_terracotta"
+      },
+      "ocean": {},
+      "birch": {},
+      "mooshroom_island": {},
+      "shore": {},
+      "minecraft:overworld_height": {"noise_type": "beach"},
+      "overworld": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 0.9,
+        "downfall": 1
+      },
+      "monster": {}
+    },
+    "description": {"identifier": "mushroom_island_shore"}
+  }
+}

@@ -1,0 +1,385 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:behavior.move_to_water": {
+        "search_range": 16,
+        "search_height": 5,
+        "goal_radius": 0.1,
+        "priority": 4,
+        "search_count": 1
+      },
+      "minecraft:physics": {},
+      "minecraft:behavior.celebrate": {
+        "duration": 30,
+        "jump_interval": {
+          "range_min": 1,
+          "range_max": 3.5
+        },
+        "celebration_sound": "celebrate",
+        "sound_interval": {
+          "range_min": 2,
+          "range_max": 7
+        },
+        "on_celebration_end_event": {
+          "event": "minecraft:stop_celebrating",
+          "target": "self"
+        },
+        "priority": 5
+      },
+      "minecraft:behavior.eat_block": {
+        "time_until_eat": 1.8,
+        "priority": 6,
+        "eat_and_replace_block_pairs": [
+          {
+            "replace_block": "dirt",
+            "eat_block": "grass"
+          },
+          {
+            "replace_block": "air",
+            "eat_block": "tallgrass"
+          }
+        ],
+        "on_eat": {
+          "event": "minecraft:on_eat_block",
+          "target": "self"
+        },
+        "success_chance": "query.is_baby ? 0.02 : 0.001"
+      },
+      "minecraft:behavior.sneeze": {
+        "cooldown_time": 1,
+        "drop_item_chance": 0.001,
+        "probability": 1.666E-4,
+        "sound": "sneeze",
+        "entity_types": [{
+          "max_dist": 10,
+          "filters": {"all_of": [
+            {
+              "test": "has_component",
+              "subject": "other",
+              "value": "minecraft:is_baby",
+              "operator": "!="
+            },
+            {
+              "test": "is_family",
+              "subject": "other",
+              "value": "panda"
+            },
+            {
+              "test": "in_water",
+              "subject": "other",
+              "value": true,
+              "operator": "!="
+            },
+            {
+              "test": "on_ground",
+              "value": true,
+              "operator": "=="
+            }
+          ]}
+        }],
+        "prepare_time": 1,
+        "within_radius": 10,
+        "priority": 7,
+        "loot_table": "loot_tables/entities/panda_sneeze.json",
+        "prepare_sound": "presneeze"
+      },
+      "minecraft:projectile": {
+        "hit_sound": "bow.hit",
+        "uncertainty_base": 16,
+        "uncertainty_multiplier": 4,
+        "offset": [
+          0,
+          -0.1,
+          0
+        ],
+        "gravity": 0.05,
+        "on_hit": {
+          "impact_damage": {
+            "damage": [
+              1,
+              4
+            ],
+            "semi_random_diff_damage": false,
+            "knockback": true,
+            "destroy_on_hit": true
+          },
+          "stick_in_ground": {"shake_time": 0.35},
+          "arrow_effect": {}
+        },
+        "anchor": 1,
+        "should_bounce": true,
+        "power": 1.6
+      },
+      "minecraft:behavior.target_when_pushed": {
+        "entity_types": [{"filters": {"all_of": [
+          {
+            "test": "is_family",
+            "subject": "other",
+            "value": "monster"
+          },
+          {
+            "test": "is_family",
+            "subject": "other",
+            "value": "creeper",
+            "operator": "!="
+          }
+        ]}}],
+        "percent_chance": 5,
+        "priority": 1
+      },
+      "minecraft:behavior.random_hover": {
+        "xz_dist": 8,
+        "hover_height": [
+          1,
+          4
+        ],
+        "y_dist": 8,
+        "interval": 1,
+        "priority": 12,
+        "y_offset": -1
+      },
+      "minecraft:collision_box": {
+        "width": 0.25,
+        "height": 0.25
+      },
+      "minecraft:navigation.walk": {
+        "avoid_water": true,
+        "avoid_damage_blocks": true,
+        "can_float": true
+      },
+      "minecraft:behavior.hide": {
+        "duration": 30,
+        "speed_multiplier": 0.8,
+        "poi_type": "bed",
+        "priority": 0
+      },
+      "minecraft:behavior.swoop_attack": {
+        "damage_reach": 0.2,
+        "delay_range": [
+          10,
+          20
+        ],
+        "speed_multiplier": 1,
+        "priority": 2
+      },
+      "minecraft:behavior.find_cover": {
+        "cooldown_time": 5,
+        "speed_multiplier": 1,
+        "priority": 9
+      },
+      "minecraft:fire_immune": {},
+      "minecraft:loot": {"table": "loot_tables/entities/iron_golem.json"},
+      "minecraft:hurt_on_condition": {"damage_conditions": [{
+        "damage_per_tick": 4,
+        "cause": "lava",
+        "filters": {
+          "test": "in_lava",
+          "subject": "self",
+          "value": true,
+          "operator": "=="
+        }
+      }]},
+      "minecraft:behavior.find_underwater_treasure": {
+        "search_range": 30,
+        "speed_multiplier": 2,
+        "priority": 2,
+        "stop_distance": 50
+      },
+      "minecraft:behavior.slime_float": {
+        "speed_multiplier": 1.2,
+        "jump_chance_percentage": 0.8,
+        "priority": 1
+      },
+      "minecraft:behavior.squid_idle": {"priority": 2},
+      "minecraft:lava_movement": {"value": 0.32},
+      "minecraft:movement.generic": {},
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:behavior.look_at_trading_player": {"priority": 4},
+      "minecraft:angry": {
+        "duration": 1,
+        "broadcast_anger": true,
+        "calm_event": {
+          "event": "minecraft:baby_on_calm",
+          "target": "self"
+        },
+        "broadcast_range": 41
+      }
+    },
+    "component_groups": {
+      "minecraft:hard_arrow": {
+        "minecraft:is_illager_captain": {},
+        "minecraft:projectile": {
+          "hit_sound": "bow.hit",
+          "uncertainty_base": 16,
+          "uncertainty_multiplier": 4,
+          "offset": [
+            0,
+            -0.1,
+            0
+          ],
+          "gravity": 0.05,
+          "on_hit": {
+            "impact_damage": {
+              "damage": [
+                1,
+                5
+              ],
+              "semi_random_diff_damage": false,
+              "knockback": true,
+              "destroy_on_hit": true
+            },
+            "stick_in_ground": {"shake_time": 0.35},
+            "arrow_effect": {}
+          },
+          "anchor": 1,
+          "should_bounce": true,
+          "power": 1.6
+        },
+        "minecraft:player.experience": {
+          "max": 1,
+          "value": 0
+        },
+        "minecraft:behavior.restrict_open_door": {"priority": 5},
+        "minecraft:type_family": {"family": [
+          "armorer",
+          "zombie_villager",
+          "zombie",
+          "undead",
+          "monster",
+          "mob"
+        ]}
+      },
+      "minecraft:pillager_arrow": {
+        "minecraft:input_ground_controlled": {},
+        "minecraft:skin_id": {"value": 1},
+        "minecraft:mark_variant": {"value": 2},
+        "minecraft:projectile": {
+          "hit_sound": "bow.hit",
+          "uncertainty_base": 16,
+          "uncertainty_multiplier": 4,
+          "offset": [
+            0,
+            -0.1,
+            0
+          ],
+          "gravity": 0.05,
+          "on_hit": {
+            "impact_damage": {
+              "damage": [
+                3,
+                6
+              ],
+              "semi_random_diff_damage": false,
+              "knockback": true,
+              "destroy_on_hit": true
+            },
+            "stick_in_ground": {"shake_time": 0.35},
+            "arrow_effect": {}
+          },
+          "anchor": 1,
+          "should_bounce": true,
+          "power": 1.6
+        },
+        "minecraft:trusting": {
+          "probability": 0.33,
+          "trust_items": [
+            "fish",
+            "salmon"
+          ],
+          "trust_event": {
+            "event": "minecraft:on_trust",
+            "target": "self"
+          }
+        },
+        "minecraft:economy_trade_table": {
+          "new_screen": true,
+          "persist_trades": true,
+          "display_name": "entity.villager.librarian",
+          "table": "trading/economy_trades/librarian_trades.json"
+        }
+      },
+      "minecraft:player_arrow": {
+        "minecraft:behavior.move_to_random_block": {
+          "speed_multiplier": 0.55,
+          "block_distance": 512,
+          "within_radius": 8,
+          "priority": 5
+        },
+        "minecraft:burns_in_daylight": {},
+        "minecraft:behavior.rise_to_liquid_level": {
+          "sink_delta": 0.01,
+          "liquid_y_offset": 0.25,
+          "priority": 0,
+          "rise_delta": 0.01
+        },
+        "minecraft:projectile": {
+          "hit_sound": "bow.hit",
+          "uncertainty_base": 1,
+          "uncertainty_multiplier": 0,
+          "offset": [
+            0,
+            -0.1,
+            0
+          ],
+          "gravity": 0.05,
+          "on_hit": {
+            "impact_damage": {
+              "damage": 1,
+              "semi_random_diff_damage": true,
+              "power_multiplier": 0.97,
+              "min_critical_damage": 9,
+              "max_critical_damage": 10,
+              "knockback": true,
+              "destroy_on_hit": true
+            },
+            "stick_in_ground": {"shake_time": 0.35},
+            "arrow_effect": {}
+          },
+          "anchor": 1,
+          "should_bounce": true,
+          "power": 5
+        },
+        "minecraft:behavior.restrict_open_door": {"priority": 5},
+        "minecraft:pushable": {
+          "is_pushable": true,
+          "is_pushable_by_piston": true
+        }
+      }
+    },
+    "description": {
+      "identifier": "minecraft:arrow",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "events": {"minecraft:entity_spawned": {"sequence": [
+      {
+        "add": {"component_groups": ["minecraft:hard_arrow"]},
+        "filters": {
+          "test": "is_difficulty",
+          "value": "hard"
+        }
+      },
+      {
+        "add": {"component_groups": ["minecraft:player_arrow"]},
+        "filters": {
+          "test": "is_family",
+          "subject": "other",
+          "value": "player"
+        }
+      },
+      {
+        "add": {"component_groups": ["minecraft:pillager_arrow"]},
+        "filters": {
+          "test": "is_family",
+          "subject": "other",
+          "value": "pillager"
+        }
+      }
+    ]}}
+  }
+}

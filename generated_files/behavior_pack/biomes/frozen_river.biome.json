@@ -1,0 +1,36 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "basalt_deltas": {},
+      "overworld_generation": {},
+      "frozen": {},
+      "minecraft:overworld_height": {"noise_type": "river"},
+      "overworld": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0.125,
+          0.25
+        ],
+        "temperature": 0,
+        "downfall": 0.5
+      },
+      "bamboo": {},
+      "mountain": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:clay",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:stripped_acacia_log",
+        "sea_floor_material": "minecraft:ancient_debris",
+        "foundation_material": "minecraft:oak_stairs"
+      },
+      "ocean": {},
+      "rare": {},
+      "hills": {},
+      "animal": {},
+      "river": {}
+    },
+    "description": {"identifier": "frozen_river"}
+  }
+}

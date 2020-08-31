@@ -1,0 +1,69 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "minecraft:wolf",
+      "population_control": "animal"
+    },
+    "conditions": [
+      {
+        "minecraft:herd": {
+          "min_size": 4,
+          "max_size": 4
+        },
+        "minecraft:brightness_filter": {
+          "min": 7,
+          "max": 15,
+          "adjust_for_weather": false
+        },
+        "minecraft:spawns_on_surface": {},
+        "minecraft:weight": {"default": 8},
+        "minecraft:biome_filter": {
+          "test": "has_biome_tag",
+          "value": "taiga",
+          "operator": "=="
+        }
+      },
+      {
+        "minecraft:herd": {
+          "min_size": 4,
+          "max_size": 4
+        },
+        "minecraft:brightness_filter": {
+          "min": 7,
+          "max": 15,
+          "adjust_for_weather": false
+        },
+        "minecraft:spawns_on_surface": {},
+        "minecraft:weight": {"default": 5},
+        "minecraft:biome_filter": {"all_of": [
+          {
+            "test": "has_biome_tag",
+            "value": "forest",
+            "operator": "=="
+          },
+          {
+            "test": "has_biome_tag",
+            "value": "mutated",
+            "operator": "!="
+          },
+          {
+            "test": "has_biome_tag",
+            "value": "birch",
+            "operator": "!="
+          },
+          {
+            "test": "has_biome_tag",
+            "value": "roofed",
+            "operator": "!="
+          },
+          {
+            "test": "has_biome_tag",
+            "value": "mountain",
+            "operator": "!="
+          }
+        ]}
+      }
+    ]
+  }
+}

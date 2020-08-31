@@ -1,0 +1,12 @@
+{
+  "minecraft:single_block_feature": {
+    "enforce_survivability_rules": false,
+    "description": {"identifier": "minecraft:crimson_fungus_feature"},
+    "enforce_placement_rules": true,
+    "places_block": {
+      "name": "minecraft:soul_sand",
+      "states": {}
+    }
+  },
+  "format_version": "1.13.0"
+}

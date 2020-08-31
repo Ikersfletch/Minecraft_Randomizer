@@ -1,0 +1,314 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:is_baby": {},
+      "minecraft:physics": {},
+      "minecraft:breedable": {
+        "breeds_with": {
+          "baby_type": "minecraft:llama",
+          "mate_type": "minecraft:llama",
+          "breed_event": {
+            "event": "minecraft:entity_born",
+            "target": "baby"
+          }
+        },
+        "inherit_tamed": false,
+        "breed_items": ["hay_block"],
+        "require_tame": true,
+        "love_filters": {
+          "test": "is_mark_variant",
+          "subject": "self",
+          "value": 1,
+          "operator": "!="
+        }
+      },
+      "minecraft:movement.jump": {"jump_delay": [
+        2,
+        6
+      ]},
+      "minecraft:insomnia": {"days_until_insomnia": 3},
+      "minecraft:loot": {"table": "loot_tables/entities/creeper.json"},
+      "minecraft:behavior.squid_idle": {"priority": 2},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:scale": {"value": 0.5},
+      "minecraft:behavior.follow_mob": {
+        "search_range": 20,
+        "speed_multiplier": 1,
+        "priority": 3,
+        "stop_distance": 3
+      },
+      "minecraft:genetics": {
+        "mutation_rate": 0.03125,
+        "genes": [{
+          "allele_range": {
+            "range_min": 0,
+            "range_max": 15
+          },
+          "name": "panda_variant",
+          "genetic_variants": [
+            {
+              "main_allele": 0,
+              "birth_event": {
+                "event": "minecraft:panda_lazy",
+                "target": "self"
+              }
+            },
+            {
+              "main_allele": 1,
+              "birth_event": {
+                "event": "minecraft:panda_worried",
+                "target": "self"
+              }
+            },
+            {
+              "main_allele": 2,
+              "birth_event": {
+                "event": "minecraft:panda_playful",
+                "target": "self"
+              }
+            },
+            {
+              "main_allele": 3,
+              "birth_event": {
+                "event": "minecraft:panda_aggressive",
+                "target": "self"
+              }
+            },
+            {
+              "both_allele": {
+                "range_min": 4,
+                "range_max": 7
+              },
+              "birth_event": {
+                "event": "minecraft:panda_weak",
+                "target": "self"
+              }
+            },
+            {
+              "both_allele": {
+                "range_min": 8,
+                "range_max": 9
+              },
+              "birth_event": {
+                "event": "minecraft:panda_brown",
+                "target": "self"
+              }
+            }
+          ]
+        }]
+      },
+      "minecraft:projectile": {
+        "shoot_target": false,
+        "uncertainty_base": 7.5,
+        "hit_sound": "bow.hit",
+        "offset": [
+          0,
+          -0.1,
+          0
+        ],
+        "liquid_inertia": 1,
+        "is_dangerous": true,
+        "reflect_on_hurt": true,
+        "inertia": 1,
+        "uncertainty_multiplier": 1,
+        "gravity": 0,
+        "on_hit": {
+          "definition_event": {
+            "event_trigger": {
+              "event": "minecraft:explode",
+              "target": "self"
+            },
+            "affect_projectile": true
+          },
+          "mob_effect": {
+            "durationhard": 800,
+            "effect": "wither",
+            "amplifier": 1,
+            "durationeasy": 0,
+            "durationnormal": 200
+          }
+        },
+        "shoot_sound": "bow",
+        "anchor": 1,
+        "power": 0.6
+      },
+      "minecraft:behavior.random_look_around_and_sit": {
+        "min_look_count": 2,
+        "probability": 0.001,
+        "min_look_time": 80,
+        "max_look_time": 100,
+        "max_look_count": 5,
+        "priority": 12
+      },
+      "minecraft:trade_resupply": {},
+      "minecraft:collision_box": {
+        "width": 0.15,
+        "height": 0.15
+      },
+      "minecraft:target_nearby_sensor": {
+        "on_inside_range": {
+          "event": "minecraft:target_too_close",
+          "target": "self"
+        },
+        "inside_range": 3,
+        "outside_range": 4
+      },
+      "minecraft:behavior.move_towards_target": {
+        "speed_multiplier": 0.9,
+        "within_radius": 32,
+        "priority": 2
+      },
+      "minecraft:behavior.follow_caravan": {
+        "entity_count": 10,
+        "speed_multiplier": 2.1,
+        "entity_types": {"filters": {
+          "test": "is_family",
+          "subject": "other",
+          "value": "llama"
+        }},
+        "priority": 3
+      },
+      "minecraft:fire_immune": {},
+      "minecraft:skin_id": {"value": 4},
+      "minecraft:color2": {"value": 4},
+      "minecraft:mob_effect": {
+        "entity_filter": {"any_of": [
+          {
+            "test": "is_family",
+            "subject": "other",
+            "value": "player"
+          },
+          {
+            "test": "is_family",
+            "subject": "other",
+            "value": "monster"
+          }
+        ]},
+        "mob_effect": "poison",
+        "effect_range": 0.2,
+        "effect_time": 10
+      },
+      "minecraft:navigation.generic": {
+        "can_walk": false,
+        "can_swim": true,
+        "can_sink": false,
+        "can_path_over_water": false,
+        "can_breach": false,
+        "is_amphibious": false
+      },
+      "minecraft:dweller": {
+        "update_interval_base": 60,
+        "can_find_poi": true,
+        "first_founding_reward": 5,
+        "dwelling_type": "village",
+        "update_interval_variant": 40,
+        "can_migrate": true,
+        "dweller_role": "inhabitant"
+      },
+      "minecraft:angry": {
+        "duration": 10,
+        "calm_event": {
+          "event": "minecraft:on_calm",
+          "target": "self"
+        }
+      },
+      "minecraft:behavior.nearest_prioritized_attackable_target": {
+        "target_search_height": 5,
+        "attack_interval": 2,
+        "entity_types": [
+          {
+            "max_dist": 12,
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "rabbit"
+            },
+            "priority": 0
+          },
+          {
+            "max_dist": 12,
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "chicken"
+            },
+            "priority": 0
+          },
+          {
+            "max_dist": 12,
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "cod"
+            },
+            "priority": 1
+          },
+          {
+            "max_dist": 12,
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "salmon"
+            },
+            "priority": 1
+          },
+          {
+            "max_dist": 12,
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "tropicalfish"
+            },
+            "priority": 1
+          },
+          {
+            "max_dist": 12,
+            "filters": {"all_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "baby_turtle"
+              },
+              {
+                "test": "in_water",
+                "subject": "other",
+                "value": true,
+                "operator": "!="
+              }
+            ]},
+            "priority": 0
+          }
+        ],
+        "priority": 6,
+        "reselect_targets": true
+      }
+    },
+    "component_groups": {"minecraft:exploding": {
+      "minecraft:behavior.find_mount": {
+        "within_radius": 16,
+        "priority": 1
+      },
+      "minecraft:explode": {
+        "fuse_lit": true,
+        "fuse_length": 0,
+        "power": 1,
+        "causes_fire": false,
+        "max_resistance": 4,
+        "destroy_affected_by_griefing": true
+      },
+      "minecraft:annotation.break_door": {},
+      "minecraft:player.saturation": {"value": 20}
+    }},
+    "description": {
+      "identifier": "minecraft:wither_skull_dangerous",
+      "is_spawnable": false,
+      "is_summonable": false,
+      "is_experimental": false
+    },
+    "events": {"minecraft:explode": {"add": {"component_groups": ["minecraft:exploding"]}}}
+  }
+}

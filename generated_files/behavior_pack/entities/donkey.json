@@ -1,0 +1,738 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:jump.static": {},
+      "minecraft:behavior.move_to_water": {
+        "search_range": 16,
+        "search_height": 5,
+        "goal_radius": 0.1,
+        "priority": 4,
+        "search_count": 1
+      },
+      "minecraft:is_baby": {},
+      "minecraft:physics": {},
+      "minecraft:nameable": {},
+      "minecraft:knockback_resistance": {"value": 1},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:type_family": {"family": [
+        "donkey",
+        "mob"
+      ]},
+      "minecraft:behavior.look_at_player": {
+        "probability": 0.02,
+        "look_distance": 6,
+        "priority": 7
+      },
+      "minecraft:on_hurt_by_player": {
+        "event": "minecraft:ranged_mode",
+        "target": "self"
+      },
+      "minecraft:navigation.walk": {
+        "avoid_water": true,
+        "avoid_damage_blocks": true,
+        "can_path_over_water": true
+      },
+      "minecraft:loot": {"table": "loot_tables/entities/boat.json"},
+      "minecraft:damage_over_time": {
+        "time_between_hurt": 0,
+        "damage_per_hurt": 1
+      },
+      "minecraft:player.level": {
+        "max": 24791,
+        "value": 0
+      },
+      "minecraft:behavior.receive_love": {"priority": 7},
+      "minecraft:flocking": {
+        "innner_cohesion_threshold": 1.5,
+        "block_weight": 0.75,
+        "cohesion_weight": 2.25,
+        "low_flock_limit": 4,
+        "high_flock_limit": 8,
+        "block_distance": 1,
+        "max_height": 4,
+        "separation_weight": 0.65,
+        "match_variants": false,
+        "loner_chance": 0.1,
+        "separation_threshold": 0.15,
+        "goal_weight": 2,
+        "breach_influence": 7,
+        "min_height": 4,
+        "cohesion_threshold": 1.5,
+        "use_center_of_mass": false,
+        "influence_radius": 3,
+        "in_water": true
+      },
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:behavior.look_at_target": {"priority": 5},
+      "minecraft:behavior.random_stroll": {
+        "speed_multiplier": 0.7,
+        "priority": 6
+      },
+      "minecraft:behavior.random_look_around": {"priority": 8},
+      "minecraft:health": {"value": {
+        "range_min": 15,
+        "range_max": 30
+      }},
+      "minecraft:behavior.panic": {
+        "speed_multiplier": 1.2,
+        "priority": 1
+      },
+      "minecraft:sittable": {},
+      "minecraft:is_saddled": {},
+      "minecraft:collision_box": {
+        "width": 1.4,
+        "height": 1.6
+      },
+      "minecraft:movement": {"value": 0.175},
+      "minecraft:is_stunned": {},
+      "minecraft:damage_sensor": {"triggers": [
+        {
+          "deals_damage": false,
+          "on_damage": {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "lightning"
+            },
+            "event": "become_witch"
+          }
+        },
+        {"on_damage": {
+          "filters": {
+            "any_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "zombie"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "husk"
+              }
+            ],
+            "all_of": [{
+              "test": "has_damage",
+              "value": "fatal"
+            }]
+          },
+          "event": "become_zombie"
+        }}
+      ]},
+      "minecraft:despawn": {"despawn_from_distance": {}},
+      "minecraft:behavior.float": {"priority": 0},
+      "minecraft:skin_id": {"value": 0},
+      "minecraft:hurt_on_condition": {"damage_conditions": [{
+        "damage_per_tick": 4,
+        "cause": "lava",
+        "filters": {
+          "test": "in_lava",
+          "subject": "self",
+          "value": true,
+          "operator": "=="
+        }
+      }]},
+      "minecraft:horse.jump_strength": {"value": 0.5},
+      "minecraft:leashable": {
+        "hard_distance": 6,
+        "soft_distance": 4,
+        "max_distance": 10
+      },
+      "minecraft:behavior.owner_hurt_target": {"priority": 2},
+      "minecraft:balloonable": {},
+      "minecraft:healable": {"items": [
+        {
+          "item": "wheat",
+          "heal_amount": 2
+        },
+        {
+          "item": "sugar",
+          "heal_amount": 1
+        },
+        {
+          "item": "hay_block",
+          "heal_amount": 20
+        },
+        {
+          "item": "apple",
+          "heal_amount": 3
+        },
+        {
+          "item": "golden_carrot",
+          "heal_amount": 4
+        },
+        {
+          "item": "golden_apple",
+          "heal_amount": 10
+        },
+        {
+          "item": "appleEnchanted",
+          "heal_amount": 10
+        }
+      ]},
+      "minecraft:scale_by_age": {
+        "start_scale": 0.5,
+        "end_scale": 1
+      },
+      "minecraft:follow_range": {"value": 64}
+    },
+    "component_groups": {
+      "minecraft:donkey_wild": {
+        "minecraft:behavior.summon_entity": {
+          "summon_choices": [
+            {
+              "cooldown_time": 5,
+              "sequence": [
+                {
+                  "base_delay": 1,
+                  "entity_type": "minecraft:evocation_fang",
+                  "shape": "circle",
+                  "size": 1.5,
+                  "entity_lifespan": 1.1,
+                  "sound_event": "prepare.attack",
+                  "num_entities_spawned": 5,
+                  "target": "self",
+                  "delay_per_summon": 0
+                },
+                {
+                  "base_delay": 0.15,
+                  "entity_type": "minecraft:evocation_fang",
+                  "shape": "circle",
+                  "size": 2.5,
+                  "entity_lifespan": 1.1,
+                  "num_entities_spawned": 8,
+                  "target": "self",
+                  "delay_per_summon": 0
+                }
+              ],
+              "particle_color": "#FF664D59",
+              "min_activation_range": 0,
+              "weight": 3,
+              "start_sound_event": "cast.spell",
+              "cast_duration": 2,
+              "max_activation_range": 3
+            },
+            {
+              "cooldown_time": 5,
+              "sequence": [{
+                "base_delay": 1,
+                "entity_type": "minecraft:evocation_fang",
+                "shape": "line",
+                "size": 20,
+                "entity_lifespan": 1.1,
+                "num_entities_spawned": 16,
+                "target": "self",
+                "delay_per_summon": 0.05
+              }],
+              "particle_color": "#FF664D59",
+              "min_activation_range": 3,
+              "weight": 3,
+              "start_sound_event": "cast.spell",
+              "cast_duration": 2
+            },
+            {
+              "cooldown_time": 17,
+              "sequence": [{
+                "base_delay": 5,
+                "entity_type": "minecraft:vex",
+                "summon_cap_radius": 16,
+                "shape": "circle",
+                "summon_cap": 8,
+                "size": 1,
+                "sound_event": "prepare.summon",
+                "num_entities_spawned": 3,
+                "target": "self"
+              }],
+              "particle_color": "#FFB3B3CC",
+              "weight": 1,
+              "cast_duration": 5
+            }
+          ],
+          "priority": 2
+        },
+        "minecraft:grows_crop": {
+          "charges": 10,
+          "chance": 0.03
+        },
+        "minecraft:tamemount": {
+          "min_temper": 0,
+          "max_temper": 100,
+          "ride_text": "action.interact.mount",
+          "feed_text": "action.interact.feed",
+          "feed_items": [
+            {
+              "item": "wheat",
+              "temper_mod": 3
+            },
+            {
+              "item": "sugar",
+              "temper_mod": 3
+            },
+            {
+              "item": "apple",
+              "temper_mod": 3
+            },
+            {
+              "item": "golden_carrot",
+              "temper_mod": 5
+            },
+            {
+              "item": "golden_apple",
+              "temper_mod": 10
+            },
+            {
+              "item": "appleEnchanted",
+              "temper_mod": 10
+            }
+          ],
+          "auto_reject_items": [
+            {"item": "horsearmorleather"},
+            {"item": "horsearmoriron"},
+            {"item": "horsearmorgold"},
+            {"item": "horsearmordiamond"},
+            {"item": "saddle"}
+          ],
+          "tame_event": {
+            "event": "minecraft:on_tame",
+            "target": "self"
+          }
+        },
+        "minecraft:behavior.mount_pathing": {
+          "speed_multiplier": 1.5,
+          "track_target": true,
+          "priority": 2,
+          "target_dist": 0
+        },
+        "minecraft:damage_over_time": {
+          "time_between_hurt": 0,
+          "damage_per_hurt": 1
+        },
+        "minecraft:behavior.scared": {
+          "sound_interval": 20,
+          "priority": 1
+        },
+        "minecraft:behavior.work": {
+          "active_time": 250,
+          "sound_delay_max": 200,
+          "work_in_rain_tolerance": 100,
+          "on_arrival": {
+            "event": "minecraft:resupply_trades",
+            "target": "self"
+          },
+          "speed_multiplier": 0.5,
+          "can_work_in_rain": false,
+          "priority": 7,
+          "goal_cooldown": 200,
+          "sound_delay_min": 100
+        },
+        "minecraft:rideable": {
+          "family_types": [
+            "player",
+            "zombie"
+          ],
+          "interact_text": "action.interact.mount",
+          "seat_count": 1,
+          "seats": {"position": [
+            0,
+            0.925,
+            -0.2
+          ]}
+        },
+        "minecraft:navigation.fly": {
+          "can_path_over_water": true,
+          "can_path_from_air": true
+        },
+        "minecraft:behavior.flee_sun": {
+          "speed_multiplier": 1,
+          "priority": 4
+        }
+      },
+      "minecraft:donkey_unchested": {
+        "minecraft:on_friendly_anger": {
+          "event": "minecraft:on_anger",
+          "target": "self"
+        },
+        "minecraft:spawn_entity": {"entities": {
+          "spawn_item": "egg",
+          "spawn_sound": "plop",
+          "min_wait_time": 300,
+          "filters": {
+            "test": "rider_count",
+            "subject": "self",
+            "value": 0,
+            "operator": "=="
+          },
+          "max_wait_time": 600
+        }},
+        "minecraft:behavior.slime_attack": {"priority": 3},
+        "minecraft:strength": {
+          "max": 5,
+          "value": 3
+        },
+        "minecraft:behavior.trade_interest": {},
+        "minecraft:interact": {"interactions": [{
+          "use_item": true,
+          "interact_text": "action.interact.attachchest",
+          "play_sounds": "armor.equip_generic",
+          "on_interact": {
+            "filters": {"all_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "player"
+              },
+              {
+                "test": "has_equipment",
+                "subject": "other",
+                "domain": "hand",
+                "value": "chest"
+              }
+            ]},
+            "event": "minecraft:on_chest",
+            "target": "self"
+          }
+        }]},
+        "minecraft:trail": {
+          "block_type": "minecraft:snow_layer",
+          "spawn_filter": {
+            "test": "is_temperature_value",
+            "value": 0.81,
+            "operator": "<"
+          }
+        }
+      },
+      "minecraft:donkey_tamed": {
+        "minecraft:breedable": {
+          "breeds_with": [
+            {
+              "baby_type": "minecraft:donkey",
+              "mate_type": "minecraft:donkey",
+              "breed_event": {
+                "event": "minecraft:entity_born",
+                "target": "baby"
+              }
+            },
+            {
+              "baby_type": "minecraft:mule",
+              "mate_type": "minecraft:horse",
+              "breed_event": {
+                "event": "minecraft:entity_born",
+                "target": "baby"
+              }
+            }
+          ],
+          "inherit_tamed": false,
+          "breed_items": [
+            "golden_carrot",
+            "golden_apple",
+            "appleEnchanted"
+          ],
+          "require_tame": true
+        },
+        "minecraft:equippable": {"slots": [{
+          "on_equip": {"event": "minecraft:donkey_saddled"},
+          "item": "saddle",
+          "on_unequip": {"event": "minecraft:donkey_unsaddled"},
+          "slot": 0,
+          "accepted_items": ["saddle"]
+        }]},
+        "minecraft:boss": {
+          "should_darken_sky": false,
+          "hud_range": 125
+        },
+        "minecraft:tameable": {
+          "tame_items": [
+            "wheat_seeds",
+            "pumpkin_seeds",
+            "melon_seeds",
+            "beetroot_seeds"
+          ],
+          "probability": 0.33,
+          "tame_event": {
+            "event": "minecraft:on_tame",
+            "target": "self"
+          }
+        },
+        "minecraft:behavior.barter": {"priority": 3},
+        "minecraft:inventory": {
+          "inventory_size": 16,
+          "container_type": "horse"
+        },
+        "minecraft:explode": {
+          "fuse_lit": true,
+          "fuse_length": 0,
+          "power": 6,
+          "causes_fire": false,
+          "destroy_affected_by_griefing": true
+        },
+        "minecraft:is_tamed": {},
+        "minecraft:lava_movement": {"value": 0.32},
+        "minecraft:behavior.tempt": {
+          "speed_multiplier": 1.2,
+          "priority": 5,
+          "items": [
+            "apple",
+            "carrot",
+            "golden_apple",
+            "appleEnchanted",
+            "golden_carrot",
+            "carrotOnAStick",
+            "hay_block",
+            "sugar",
+            "bread",
+            "wheat"
+          ]
+        },
+        "minecraft:rideable": {
+          "family_types": ["player"],
+          "interact_text": "action.interact.ride.horse",
+          "seat_count": 1,
+          "crouching_skip_interact": true,
+          "seats": {"position": [
+            0,
+            0.925,
+            -0.2
+          ]}
+        },
+        "minecraft:behavior.player_ride_tamed": {}
+      },
+      "minecraft:donkey_adult": {
+        "minecraft:equippable": {"slots": [{
+          "item": "carpet",
+          "slot": 1,
+          "accepted_items": ["carpet"]
+        }]},
+        "minecraft:behavior.stay_while_sitting": {"priority": 3},
+        "minecraft:experience_reward": {
+          "on_death": "query.last_hit_by_player ? Math.Random(1,3) : 0",
+          "on_bred": "Math.Random(1,7)"
+        },
+        "minecraft:loot": {"table": "loot_tables/entities/horse.json"},
+        "minecraft:insomnia": {"days_until_insomnia": 3},
+        "minecraft:behavior.breed": {
+          "speed_multiplier": 1,
+          "priority": 2
+        },
+        "minecraft:skin_id": {"value": 4},
+        "minecraft:behavior.eat_block": {
+          "time_until_eat": 1.8,
+          "priority": 6,
+          "eat_and_replace_block_pairs": [
+            {
+              "replace_block": "dirt",
+              "eat_block": "grass"
+            },
+            {
+              "replace_block": "air",
+              "eat_block": "tallgrass"
+            }
+          ],
+          "on_eat": {
+            "event": "minecraft:on_eat_block",
+            "target": "self"
+          },
+          "success_chance": "query.is_baby ? 0.02 : 0.001"
+        },
+        "minecraft:peek": {
+          "on_target_open": {"event": "minecraft:on_open"},
+          "on_close": {"event": "minecraft:on_close"},
+          "on_open": {"event": "minecraft:on_open"}
+        },
+        "minecraft:ambient_sound_interval": {"event_name": "sleep"},
+        "minecraft:behavior.run_around_like_crazy": {
+          "speed_multiplier": 1.2,
+          "priority": 1
+        }
+      },
+      "minecraft:donkey_chested": {
+        "minecraft:raid_trigger": {"triggered_event": {
+          "event": "minecraft:remove_raid_trigger",
+          "target": "self"
+        }},
+        "minecraft:behavior.move_to_lava": {
+          "search_range": 16,
+          "search_height": 10,
+          "goal_radius": 0.9,
+          "priority": 7,
+          "search_count": 30
+        },
+        "minecraft:is_chested": {},
+        "minecraft:group_size": {
+          "filters": {"all_of": [
+            {
+              "test": "has_component",
+              "value": "minecraft:is_baby",
+              "operator": "!="
+            },
+            {
+              "test": "is_family",
+              "value": "piglin"
+            }
+          ]},
+          "radius": 32
+        },
+        "minecraft:is_ignited": {},
+        "minecraft:skin_id": {"value": 4},
+        "minecraft:player.experience": {
+          "max": 1,
+          "value": 0
+        },
+        "minecraft:navigation.generic": {
+          "can_walk": false,
+          "can_swim": true,
+          "can_sink": false,
+          "can_path_over_water": false,
+          "can_breach": true,
+          "is_amphibious": true
+        }
+      },
+      "minecraft:donkey_baby": {
+        "minecraft:is_baby": {},
+        "minecraft:behavior.follow_parent": {
+          "speed_multiplier": 1,
+          "priority": 4
+        },
+        "minecraft:behavior.stomp_attack": {
+          "no_damage_range_multiplier": 2,
+          "track_target": true,
+          "priority": 1,
+          "require_complete_path": true,
+          "stomp_range_multiplier": 2
+        },
+        "minecraft:behavior.squid_move_away_from_ground": {"priority": 1},
+        "minecraft:ageable": {
+          "duration": 1200,
+          "grow_up": {
+            "event": "minecraft:ageable_grow_up",
+            "target": "self"
+          },
+          "feed_items": [
+            {
+              "item": "wheat",
+              "growth": 0.016667
+            },
+            {
+              "item": "sugar",
+              "growth": 0.025
+            },
+            {
+              "item": "hay_block",
+              "growth": 0.15
+            },
+            {
+              "item": "apple",
+              "growth": 0.05
+            },
+            {
+              "item": "golden_carrot",
+              "growth": 0.05
+            },
+            {
+              "item": "golden_apple",
+              "growth": 0.2
+            },
+            {
+              "item": "appleEnchanted",
+              "growth": 0.2
+            }
+          ]
+        },
+        "minecraft:transformation": {
+          "into": "minecraft:zombie_pigman",
+          "transformation_sound": "converted_to_zombified",
+          "keep_level": true
+        },
+        "minecraft:peek": {
+          "on_target_open": {"event": "minecraft:on_open"},
+          "on_close": {"event": "minecraft:on_close"},
+          "on_open": {"event": "minecraft:on_open"}
+        },
+        "minecraft:scale_by_age": {
+          "start_scale": 0.5,
+          "end_scale": 1
+        },
+        "minecraft:movement.amphibious": {"max_turn": 5}
+      },
+      "minecraft:donkey_saddled": {
+        "minecraft:input_ground_controlled": {},
+        "minecraft:movement.jump": {"jump_delay": [
+          2,
+          6
+        ]},
+        "minecraft:behavior.squid_flee": {"priority": 2},
+        "minecraft:behavior.eat_block": {
+          "time_until_eat": 1.8,
+          "priority": 6,
+          "eat_and_replace_block_pairs": [
+            {
+              "replace_block": "dirt",
+              "eat_block": "grass"
+            },
+            {
+              "replace_block": "air",
+              "eat_block": "tallgrass"
+            }
+          ],
+          "on_eat": {
+            "event": "minecraft:on_eat_block",
+            "target": "self"
+          },
+          "success_chance": "query.is_baby ? 0.02 : 0.001"
+        },
+        "minecraft:water_movement": {"drag_factor": 0.9},
+        "minecraft:is_saddled": {},
+        "minecraft:can_power_jump": {}
+      }
+    },
+    "description": {
+      "identifier": "minecraft:donkey",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "events": {
+      "minecraft:entity_born": {"add": {"component_groups": ["minecraft:donkey_baby"]}},
+      "minecraft:donkey_unsaddled": {"remove": {"component_groups": ["minecraft:donkey_saddled"]}},
+      "minecraft:on_chest": {
+        "add": {"component_groups": ["minecraft:donkey_chested"]},
+        "remove": {"component_groups": ["minecraft:donkey_unchested"]}
+      },
+      "minecraft:entity_spawned": {"randomize": [
+        {
+          "add": {"component_groups": [
+            "minecraft:donkey_adult",
+            "minecraft:donkey_wild"
+          ]},
+          "weight": 80
+        },
+        {
+          "add": {"component_groups": ["minecraft:donkey_baby"]},
+          "weight": 20
+        }
+      ]},
+      "minecraft:on_tame": {
+        "add": {"component_groups": [
+          "minecraft:donkey_tamed",
+          "minecraft:donkey_unchested"
+        ]},
+        "remove": {"component_groups": ["minecraft:donkey_wild"]}
+      },
+      "minecraft:donkey_saddled": {"add": {"component_groups": ["minecraft:donkey_saddled"]}},
+      "minecraft:ageable_grow_up": {
+        "add": {"component_groups": [
+          "minecraft:donkey_adult",
+          "minecraft:donkey_wild"
+        ]},
+        "remove": {"component_groups": ["minecraft:donkey_baby"]}
+      }
+    }
+  }
+}

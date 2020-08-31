@@ -1,0 +1,39 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "bamboo": {},
+      "mega": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:lime_glazed_terracotta",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:loom",
+        "sea_floor_material": "minecraft:loom",
+        "foundation_material": "minecraft:blackstone"
+      },
+      "minecraft:overworld_generation_rules": {
+        "generate_for_climates": [[
+          "warm",
+          2
+        ]],
+        "hills_transformation": "savanna_plateau",
+        "mutate_transformation": "savanna_mutated"
+      },
+      "savanna": {},
+      "animal": {},
+      "minecraft:overworld_height": {"noise_type": "lowlands"},
+      "overworld": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 1.2,
+        "downfall": 0
+      },
+      "monster": {}
+    },
+    "description": {"identifier": "savanna"}
+  }
+}

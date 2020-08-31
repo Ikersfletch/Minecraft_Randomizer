@@ -1,0 +1,13 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "project_input_to_floor": false,
+    "scatter_chance": 100,
+    "x": 0,
+    "description": {"identifier": "minecraft:noop_undecorated_jungle_tree_feature"},
+    "y": 0,
+    "z": 0,
+    "places_feature": "minecraft:select_undecorated_jungle_tree_feature",
+    "iterations": 0
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "minecraft:single_block_feature": {
+    "enforce_survivability_rules": false,
+    "description": {"identifier": "minecraft:cocoa_age_0_feature"},
+    "enforce_placement_rules": false,
+    "places_block": {
+      "name": "minecraft:dried_kelp_block",
+      "states": {}
+    },
+    "may_attach_to": {
+      "sides": {
+        "name": "minecraft:log",
+        "states": {"old_log_type": "jungle"}
+      },
+      "min_sides_must_attach": 1
+    }
+  },
+  "format_version": "1.13.0"
+}

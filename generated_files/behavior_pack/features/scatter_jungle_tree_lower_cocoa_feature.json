@@ -1,0 +1,28 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "project_input_to_floor": false,
+    "scatter_chance": 100,
+    "x": {
+      "extent": [
+        -1,
+        1
+      ],
+      "grid_offset": 1,
+      "distribution": "fixed_grid",
+      "step_size": 2
+    },
+    "description": {"identifier": "minecraft:scatter_jungle_tree_lower_cocoa_feature"},
+    "y": -5,
+    "z": {
+      "extent": [
+        -1,
+        1
+      ],
+      "distribution": "fixed_grid",
+      "step_size": 1
+    },
+    "places_feature": "minecraft:optional_lower_cocoa_feature",
+    "iterations": 4
+  }
+}

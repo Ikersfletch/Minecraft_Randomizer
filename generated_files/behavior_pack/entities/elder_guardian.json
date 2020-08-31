@@ -1,0 +1,246 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:jump.static": {},
+      "minecraft:movement.hover": {},
+      "minecraft:physics": {},
+      "minecraft:nameable": {},
+      "minecraft:behavior.stomp_attack": {
+        "no_damage_range_multiplier": 2,
+        "track_target": true,
+        "priority": 1,
+        "require_complete_path": true,
+        "stomp_range_multiplier": 2
+      },
+      "minecraft:on_start_takeoff": {
+        "event": "minecraft:start_fly",
+        "target": "self"
+      },
+      "minecraft:breathable": {"breathes_water": true},
+      "minecraft:movement.basic": {},
+      "minecraft:behavior.look_at_player": {
+        "probability": 0.01,
+        "look_distance": 12,
+        "priority": 8
+      },
+      "minecraft:type_family": {"family": [
+        "guardian_elder",
+        "monster",
+        "mob"
+      ]},
+      "minecraft:behavior.nearest_attackable_target": {
+        "entity_types": [{
+          "max_dist": 16,
+          "filters": {"any_of": [
+            {
+              "test": "is_family",
+              "subject": "other",
+              "value": "player"
+            },
+            {
+              "test": "is_family",
+              "subject": "other",
+              "value": "squid"
+            }
+          ]}
+        }],
+        "attack_interval_min": 1,
+        "must_see": true,
+        "priority": 1
+      },
+      "minecraft:movement.jump": {"jump_delay": [
+        0.16,
+        0.5
+      ]},
+      "minecraft:loot": {"table": "loot_tables/entities/ravager.json"},
+      "minecraft:behavior.move_towards_restriction": {
+        "control_flags": [
+          "move",
+          "look"
+        ],
+        "speed_multiplier": 1,
+        "priority": 5
+      },
+      "minecraft:behavior.random_swim": {
+        "avoid_surface": false,
+        "speed_multiplier": 0.5,
+        "priority": 7
+      },
+      "minecraft:behavior.share_items": {
+        "speed_multiplier": 0.5,
+        "entity_types": [{"filters": {
+          "test": "is_family",
+          "subject": "other",
+          "value": "villager"
+        }}],
+        "goal_radius": 2,
+        "max_dist": 3,
+        "priority": 8
+      },
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:behavior.stalk_and_pounce_on_target": {
+        "leap_height": 0.9,
+        "strike_dist": 2,
+        "stalk_speed": 1.2,
+        "leap_dist": 0.8,
+        "max_stalk_dist": 12,
+        "stuck_time": 2,
+        "priority": 7,
+        "pounce_max_dist": 5,
+        "stuck_blocks": {
+          "test": "is_block",
+          "subject": "block",
+          "value": "snow_layer",
+          "operator": "=="
+        },
+        "interest_time": 2
+      },
+      "minecraft:player.exhaustion": {
+        "max": 4,
+        "value": 0
+      },
+      "minecraft:behavior.random_look_around": {"priority": 9},
+      "minecraft:behavior.leap_at_target": {
+        "priority": 4,
+        "target_dist": 0.4
+      },
+      "minecraft:genetics": {
+        "mutation_rate": 0.03125,
+        "genes": [{
+          "allele_range": {
+            "range_min": 0,
+            "range_max": 15
+          },
+          "name": "panda_variant",
+          "genetic_variants": [
+            {
+              "main_allele": 0,
+              "birth_event": {
+                "event": "minecraft:panda_lazy",
+                "target": "self"
+              }
+            },
+            {
+              "main_allele": 1,
+              "birth_event": {
+                "event": "minecraft:panda_worried",
+                "target": "self"
+              }
+            },
+            {
+              "main_allele": 2,
+              "birth_event": {
+                "event": "minecraft:panda_playful",
+                "target": "self"
+              }
+            },
+            {
+              "main_allele": 3,
+              "birth_event": {
+                "event": "minecraft:panda_aggressive",
+                "target": "self"
+              }
+            },
+            {
+              "both_allele": {
+                "range_min": 4,
+                "range_max": 7
+              },
+              "birth_event": {
+                "event": "minecraft:panda_weak",
+                "target": "self"
+              }
+            },
+            {
+              "both_allele": {
+                "range_min": 8,
+                "range_max": 9
+              },
+              "birth_event": {
+                "event": "minecraft:panda_brown",
+                "target": "self"
+              }
+            }
+          ]
+        }]
+      },
+      "minecraft:health": {
+        "max": 80,
+        "value": 80
+      },
+      "minecraft:is_saddled": {},
+      "minecraft:behavior.knockback_roar": {
+        "duration": 1,
+        "cooldown_time": 0.1,
+        "knockback_filters": {
+          "test": "is_family",
+          "subject": "other",
+          "value": "ravager",
+          "operator": "!="
+        },
+        "damage_filters": {
+          "test": "is_family",
+          "subject": "other",
+          "value": "illager",
+          "operator": "!="
+        },
+        "attack_time": 0.5,
+        "on_roar_end": {"event": "minecraft:end_roar"},
+        "knockback_damage": 6,
+        "priority": 1,
+        "knockback_strength": 3,
+        "knockback_range": 4
+      },
+      "minecraft:underwater_movement": {"value": 0.3},
+      "minecraft:collision_box": {
+        "width": 0.5,
+        "height": 0.9
+      },
+      "minecraft:movement": {"value": 0.3},
+      "minecraft:behavior.swoop_attack": {
+        "damage_reach": 0.2,
+        "delay_range": [
+          10,
+          20
+        ],
+        "speed_multiplier": 1,
+        "priority": 2
+      },
+      "minecraft:experience_reward": {"on_death": "query.last_hit_by_player ? 10 : 0"},
+      "minecraft:movement.sway": {},
+      "minecraft:hurt_on_condition": {"damage_conditions": [{
+        "damage_per_tick": 4,
+        "cause": "lava",
+        "filters": {
+          "test": "in_lava",
+          "subject": "self",
+          "value": true,
+          "operator": "=="
+        }
+      }]},
+      "minecraft:behavior.guardian_attack": {"priority": 4},
+      "minecraft:navigation.generic": {
+        "can_walk": false,
+        "can_swim": true,
+        "can_path_over_water": false,
+        "can_breach": true,
+        "is_amphibious": true
+      },
+      "minecraft:attack": {"damage": 5},
+      "minecraft:follow_range": {
+        "max": 16,
+        "value": 16
+      }
+    },
+    "description": {
+      "identifier": "minecraft:elder_guardian",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    }
+  }
+}

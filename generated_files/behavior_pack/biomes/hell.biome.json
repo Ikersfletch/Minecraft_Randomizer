@@ -1,0 +1,76 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "spawn_ghast": {},
+      "nether": {},
+      "minecraft:nether_generation_rules": {
+        "target_altitude": 0,
+        "target_weirdness": 0,
+        "target_humidity": 0,
+        "weight": 0,
+        "target_temperature": 0
+      },
+      "spawn_endermen": {},
+      "birch": {},
+      "nether_wastes": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 2,
+        "downfall": 0
+      },
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:crimson_nylium",
+        "sea_material": "minecraft:lava",
+        "mid_material": "minecraft:seaLantern",
+        "sea_floor_material": "minecraft:noteblock",
+        "foundation_material": "minecraft:emerald_block"
+      },
+      "spawn_few_piglins": {},
+      "mesa": {},
+      "spawn_magma_cubes": {},
+      "extreme_hills": {},
+      "minecraft:surface_material_adjustments": {"adjustments": [
+        {
+          "noise_range": [
+            -1,
+            -0.4
+          ],
+          "materials": {
+            "top_material": "minecraft:gravel",
+            "sea_floor_material": "minecraft:gravel"
+          },
+          "noise_frequency_scale": 0.03125,
+          "height_range": [
+            "variable.sea_level - 3",
+            "variable.sea_level + 2"
+          ]
+        },
+        {
+          "noise_range": [
+            0.4,
+            1
+          ],
+          "materials": {
+            "top_material": "minecraft:soul_sand",
+            "mid_material": "minecraft:soul_sand",
+            "sea_floor_material": "minecraft:soul_sand"
+          },
+          "noise_frequency_scale": 0.03125,
+          "height_range": [
+            "variable.sea_level - 3",
+            "variable.sea_level + 2"
+          ]
+        }
+      ]},
+      "spawn_zombified_piglin": {},
+      "animal": {},
+      "desert": {}
+    },
+    "description": {"identifier": "hell"}
+  }
+}

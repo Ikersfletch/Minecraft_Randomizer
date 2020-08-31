@@ -1,0 +1,113 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:collision_box": {
+        "width": 0.15,
+        "height": 0.15
+      },
+      "minecraft:attack_damage": {"value": 4},
+      "minecraft:behavior.ranged_attack": {
+        "attack_radius": 15,
+        "attack_interval_max": 3,
+        "attack_interval_min": 1,
+        "priority": 0
+      },
+      "minecraft:physics": {},
+      "minecraft:loot": {"table": "loot_tables/entities/piglin.json"},
+      "minecraft:insomnia": {"days_until_insomnia": 3},
+      "minecraft:is_illager_captain": {},
+      "minecraft:projectile": {"on_hit": {"stick_in_ground": {}}},
+      "minecraft:health": {
+        "max": 40,
+        "value": 40
+      },
+      "minecraft:peek": {
+        "on_target_open": {"event": "minecraft:on_open"},
+        "on_close": {"event": "minecraft:on_close"},
+        "on_open": {"event": "minecraft:on_open"}
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:movement.amphibious": {"max_turn": 5}
+    },
+    "component_groups": {"loot_jungle": {
+      "minecraft:behavior.nap": {
+        "mob_detect_height": 6,
+        "wake_mob_exceptions": {"any_of": [
+          {
+            "test": "trusts",
+            "subject": "other",
+            "value": true,
+            "operator": "=="
+          },
+          {
+            "test": "is_family",
+            "subject": "other",
+            "value": "fox",
+            "operator": "=="
+          },
+          {
+            "test": "is_sneaking",
+            "subject": "other",
+            "value": true,
+            "operator": "=="
+          }
+        ]},
+        "cooldown_min": 2,
+        "cooldown_max": 7,
+        "mob_detect_dist": 12,
+        "priority": 8,
+        "can_nap_filters": {"all_of": [
+          {
+            "test": "in_water",
+            "subject": "self",
+            "value": false,
+            "operator": "=="
+          },
+          {
+            "test": "on_ground",
+            "subject": "self",
+            "value": true,
+            "operator": "=="
+          },
+          {
+            "test": "is_underground",
+            "subject": "self",
+            "value": true,
+            "operator": "=="
+          },
+          {
+            "test": "weather_at_position",
+            "subject": "self",
+            "value": "thunderstorm",
+            "operator": "!="
+          }
+        ]}
+      },
+      "minecraft:behavior.skeleton_horse_trap": {
+        "duration": 900,
+        "within_radius": 10,
+        "priority": 2
+      },
+      "minecraft:home": {},
+      "minecraft:loot": {"table": "loot_tables/gameplay/jungle_fishing.json"},
+      "minecraft:behavior.trade_with_player": {"priority": 1}
+    }},
+    "description": {
+      "identifier": "minecraft:fishing_hook",
+      "is_spawnable": false,
+      "is_summonable": false,
+      "is_experimental": false
+    },
+    "events": {"minecraft:entity_spawned": {"sequence": [{
+      "add": {"component_groups": ["loot_jungle"]},
+      "filters": {
+        "test": "is_biome",
+        "value": "jungle"
+      }
+    }]}}
+  }
+}

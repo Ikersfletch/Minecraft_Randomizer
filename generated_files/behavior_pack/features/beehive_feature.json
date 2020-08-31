@@ -1,0 +1,57 @@
+{
+  "minecraft:single_block_feature": {
+    "enforce_survivability_rules": true,
+    "description": {"identifier": "minecraft:beehive_feature"},
+    "enforce_placement_rules": true,
+    "places_block": {
+      "name": "minecraft:stone",
+      "states": {}
+    },
+    "may_attach_to": {
+      "east": [
+        {
+          "name": "minecraft:log",
+          "states": {"old_log_type": "oak"}
+        },
+        {
+          "name": "minecraft:log",
+          "states": {"old_log_type": "birch"}
+        }
+      ],
+      "auto_rotate": false,
+      "top": [
+        {
+          "name": "minecraft:leaves",
+          "states": {"old_leaf_type": "oak"}
+        },
+        {
+          "name": "minecraft:leaves",
+          "states": {"old_leaf_type": "birch"}
+        }
+      ],
+      "south": "minecraft:air",
+      "north": [
+        {
+          "name": "minecraft:log",
+          "states": {"old_log_type": "oak"}
+        },
+        {
+          "name": "minecraft:log",
+          "states": {"old_log_type": "birch"}
+        }
+      ],
+      "west": [
+        {
+          "name": "minecraft:log",
+          "states": {"old_log_type": "oak"}
+        },
+        {
+          "name": "minecraft:log",
+          "states": {"old_log_type": "birch"}
+        }
+      ],
+      "min_sides_must_attach": 2
+    }
+  },
+  "format_version": "1.13.0"
+}

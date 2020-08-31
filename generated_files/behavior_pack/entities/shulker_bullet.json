@@ -1,0 +1,85 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:collision_box": {
+        "width": 0.625,
+        "height": 0.625
+      },
+      "minecraft:physics": {"has_collision": false},
+      "minecraft:loot": {"table": "loot_tables/entities/salmon_normal.json"},
+      "minecraft:skin_id": {"value": 5},
+      "minecraft:behavior.melee_attack": {
+        "reach_multiplier": 1,
+        "track_target": true,
+        "priority": 2
+      },
+      "minecraft:hurt_on_condition": {"damage_conditions": [{
+        "damage_per_tick": 4,
+        "cause": "lava",
+        "filters": {
+          "test": "in_lava",
+          "subject": "self",
+          "value": true,
+          "operator": "=="
+        }
+      }]},
+      "minecraft:projectile": {
+        "hit_sound": "bullet.hit",
+        "uncertainty_base": 16,
+        "uncertainty_multiplier": 4,
+        "offset": [
+          0,
+          -0.1,
+          0
+        ],
+        "gravity": 0.05,
+        "on_hit": {
+          "particle_on_hit": {
+            "particle_type": "largeexplode",
+            "on_other_hit": true
+          },
+          "remove_on_hit": {},
+          "impact_damage": {
+            "damage": 4,
+            "should_bounce": true,
+            "knockback": true
+          },
+          "mob_effect": {
+            "durationhard": 200,
+            "effect": "levitation",
+            "amplifier": 1,
+            "durationeasy": 200,
+            "durationnormal": 200
+          }
+        },
+        "anchor": 1,
+        "crit_particle_on_hurt": true,
+        "power": 1.6,
+        "homing": true,
+        "destroyOnHurt": true
+      },
+      "minecraft:jump.dynamic": {},
+      "minecraft:behavior.snacking": {
+        "snacking_cooldown_min": 20,
+        "snacking_stop_chance": 0.001334,
+        "snacking_cooldown": 22.5,
+        "priority": 2,
+        "items": [
+          "bamboo",
+          "cake"
+        ]
+      },
+      "minecraft:on_target_escape": {
+        "event": "minecraft:become_calm",
+        "target": "self"
+      }
+    },
+    "description": {
+      "identifier": "minecraft:shulker_bullet",
+      "is_spawnable": false,
+      "is_summonable": false,
+      "is_experimental": false
+    }
+  }
+}

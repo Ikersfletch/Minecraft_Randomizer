@@ -1,0 +1,56 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "minecraft:salmon",
+      "population_control": "water_animal"
+    },
+    "conditions": [
+      {
+        "minecraft:herd": {
+          "min_size": 3,
+          "max_size": 5
+        },
+        "minecraft:spawns_underwater": {},
+        "minecraft:spawns_on_surface": {},
+        "minecraft:density_limit": {"surface": 10},
+        "minecraft:weight": {"default": 26},
+        "minecraft:biome_filter": [
+          {
+            "test": "has_biome_tag",
+            "value": "ocean",
+            "operator": "=="
+          },
+          {
+            "test": "has_biome_tag",
+            "value": "warm",
+            "operator": "!="
+          }
+        ],
+        "minecraft:distance_filter": {
+          "min": 12,
+          "max": 32
+        }
+      },
+      {
+        "minecraft:herd": {
+          "min_size": 3,
+          "max_size": 5
+        },
+        "minecraft:spawns_underwater": {},
+        "minecraft:spawns_on_surface": {},
+        "minecraft:density_limit": {"surface": 4},
+        "minecraft:weight": {"default": 16},
+        "minecraft:biome_filter": [{
+          "test": "has_biome_tag",
+          "value": "river",
+          "operator": "=="
+        }],
+        "minecraft:distance_filter": {
+          "min": 12,
+          "max": 32
+        }
+      }
+    ]
+  }
+}

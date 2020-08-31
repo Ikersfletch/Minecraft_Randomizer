@@ -1,0 +1,35 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "deep": {},
+      "nether": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:coral_block",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:honeycomb_block",
+        "sea_floor_material": "minecraft:emerald_ore",
+        "foundation_material": "minecraft:magma"
+      },
+      "minecraft:overworld_generation_rules": {"generate_for_climates": [[
+        "cold",
+        1
+      ]]},
+      "ocean": {},
+      "minecraft:overworld_height": {"noise_type": "deep_ocean"},
+      "cold": {},
+      "overworld": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 0.5,
+        "downfall": 0.5
+      },
+      "monster": {}
+    },
+    "description": {"identifier": "deep_cold_ocean"}
+  }
+}

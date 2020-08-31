@@ -1,0 +1,85 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:behavior.charge_attack": {
+        "speed_multiplier": 2,
+        "priority": 4
+      },
+      "minecraft:physics": {},
+      "minecraft:behavior.rise_to_liquid_level": {
+        "sink_delta": 0.01,
+        "liquid_y_offset": 0.25,
+        "priority": 0,
+        "rise_delta": 0.01
+      },
+      "minecraft:projectile": {
+        "inertia": 1,
+        "uncertainty_base": 10,
+        "uncertainty_multiplier": 4,
+        "offset": [
+          0,
+          -0.1,
+          0
+        ],
+        "gravity": 0.06,
+        "on_hit": {
+          "remove_on_hit": {},
+          "impact_damage": {
+            "damage": 1,
+            "knockback": false
+          }
+        },
+        "anchor": 1,
+        "power": 1.5,
+        "reflect_on_hurt": true
+      },
+      "minecraft:behavior.stomp_turtle_egg": {
+        "search_range": 10,
+        "speed_multiplier": 1,
+        "search_height": 2,
+        "goal_radius": 1.14,
+        "interval": 20,
+        "priority": 5
+      },
+      "minecraft:behavior.lay_egg": {
+        "on_lay": {
+          "event": "minecraft:laid_egg",
+          "target": "self"
+        },
+        "search_range": 16,
+        "speed_multiplier": 1,
+        "search_height": 4,
+        "goal_radius": 1.5,
+        "priority": 1
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:collision_box": {
+        "width": 0.31,
+        "height": 0.31
+      },
+      "minecraft:persistent": {},
+      "minecraft:behavior.ranged_attack": {
+        "attack_radius": 64,
+        "charge_shoot_trigger": 2,
+        "charge_charged_trigger": 1,
+        "priority": 2
+      },
+      "minecraft:loot": {"table": "loot_tables/entities/fish.json"},
+      "minecraft:player.level": {
+        "max": 24791,
+        "value": 0
+      },
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      }
+    },
+    "description": {
+      "identifier": "minecraft:llama_spit",
+      "is_spawnable": false,
+      "is_summonable": false,
+      "is_experimental": false
+    }
+  }
+}

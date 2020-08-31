@@ -1,0 +1,32 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "nether": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:hardened_clay",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:blackstone",
+        "sea_floor_material": "minecraft:blast_furnace",
+        "foundation_material": "minecraft:emerald_block"
+      },
+      "ocean": {},
+      "taiga": {},
+      "animal": {},
+      "minecraft:overworld_height": {"noise_type": "river"},
+      "overworld": {},
+      "river": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 0.5,
+        "downfall": 0.5
+      },
+      "monster": {}
+    },
+    "description": {"identifier": "river"}
+  }
+}

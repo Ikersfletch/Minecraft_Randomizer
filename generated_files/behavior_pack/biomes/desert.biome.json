@@ -1,0 +1,44 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "mutated": {},
+      "mega": {},
+      "shore": {},
+      "minecraft:overworld_height": {"noise_type": "lowlands"},
+      "overworld": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 2,
+        "downfall": 0
+      },
+      "monster": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:leaves2",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:emerald_block",
+        "sea_floor_material": "minecraft:smooth_stone",
+        "foundation_material": "minecraft:cracked_polished_blackstone_bricks"
+      },
+      "minecraft:overworld_generation_rules": {
+        "generate_for_climates": [[
+          "warm",
+          3
+        ]],
+        "hills_transformation": "desert_hills",
+        "mutate_transformation": "desert_mutated"
+      },
+      "ocean": {},
+      "soulsand_valley": {},
+      "hills": {},
+      "mooshroom_island": {},
+      "animal": {},
+      "desert": {}
+    },
+    "description": {"identifier": "desert"}
+  }
+}

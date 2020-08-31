@@ -1,0 +1,35 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "mutated": {},
+      "deep": {},
+      "forest": {},
+      "birch": {},
+      "minecraft:overworld_height": {"noise_type": "deep_ocean"},
+      "overworld": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 0.5,
+        "downfall": 0.5
+      },
+      "monster": {},
+      "warm": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 3,
+        "top_material": "minecraft:silver_glazed_terracotta",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:end_stone",
+        "sea_floor_material": "minecraft:netherreactor",
+        "foundation_material": "minecraft:stripped_crimson_hyphae"
+      },
+      "ocean": {},
+      "animal": {},
+      "jungle": {}
+    },
+    "description": {"identifier": "deep_warm_ocean"}
+  }
+}

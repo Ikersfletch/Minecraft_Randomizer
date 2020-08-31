@@ -1,0 +1,45 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "bee_habitat": {},
+      "forest": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:coal_ore",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:crying_obsidian",
+        "sea_floor_material": "minecraft:hardened_clay",
+        "foundation_material": "minecraft:coral_block"
+      },
+      "minecraft:overworld_generation_rules": {
+        "generate_for_climates": [
+          [
+            "medium",
+            1
+          ],
+          [
+            "cold",
+            1
+          ]
+        ],
+        "hills_transformation": "forest_hills",
+        "mutate_transformation": "flower_forest"
+      },
+      "spawn_magma_cubes": {},
+      "animal": {},
+      "minecraft:overworld_height": {"noise_type": "default"},
+      "overworld": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 0.7,
+        "downfall": 0.8
+      },
+      "monster": {}
+    },
+    "description": {"identifier": "forest"}
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "forest": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:iron_ore",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:cyan_glazed_terracotta",
+        "sea_floor_material": "minecraft:dropper",
+        "foundation_material": "minecraft:cartography_table"
+      },
+      "mesa": {},
+      "taiga": {},
+      "birch": {},
+      "hills": {},
+      "animal": {},
+      "minecraft:overworld_height": {"noise_type": "mountains"},
+      "cold": {},
+      "overworld": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0.125,
+          0.5
+        ],
+        "temperature": -0.5,
+        "downfall": 0.4
+      },
+      "monster": {}
+    },
+    "description": {"identifier": "cold_taiga_hills"}
+  }
+}

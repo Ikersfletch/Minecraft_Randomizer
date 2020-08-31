@@ -1,0 +1,31 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "coordinate_eval_order": "zyx",
+    "project_input_to_floor": false,
+    "x": {
+      "extent": [
+        -8,
+        8
+      ],
+      "distribution": "gaussian"
+    },
+    "description": {"identifier": "minecraft:crimson_fungus_scatter_feature"},
+    "y": {
+      "extent": [
+        -4,
+        4
+      ],
+      "distribution": "gaussian"
+    },
+    "z": {
+      "extent": [
+        -8,
+        8
+      ],
+      "distribution": "gaussian"
+    },
+    "places_feature": "minecraft:crimson_fungus_feature",
+    "iterations": 24
+  }
+}

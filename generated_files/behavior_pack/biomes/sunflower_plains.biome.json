@@ -1,0 +1,36 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "mutated": {},
+      "forest": {},
+      "frozen": {},
+      "minecraft:overworld_height": {"noise_type": "lowlands"},
+      "cold": {},
+      "overworld": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 0.8,
+        "downfall": 0.4
+      },
+      "monster": {},
+      "bee_habitat": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:podzol",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:quartz_bricks",
+        "sea_floor_material": "minecraft:normal_stone_stairs",
+        "foundation_material": "minecraft:furnace"
+      },
+      "plains": {},
+      "plateau": {},
+      "animal": {},
+      "desert": {}
+    },
+    "description": {"identifier": "sunflower_plains"}
+  }
+}

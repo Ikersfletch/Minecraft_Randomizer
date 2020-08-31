@@ -1,0 +1,32 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "mutated": {},
+      "forest": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:red_nether_brick",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:netherreactor",
+        "sea_floor_material": "minecraft:crimson_hyphae",
+        "foundation_material": "minecraft:redstone_lamp"
+      },
+      "overworld_generation": {},
+      "hills": {},
+      "animal": {},
+      "minecraft:overworld_height": {"noise_type": "default_mutated"},
+      "jungle": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 0.95,
+        "downfall": 0.9
+      },
+      "monster": {}
+    },
+    "description": {"identifier": "jungle_mutated"}
+  }
+}

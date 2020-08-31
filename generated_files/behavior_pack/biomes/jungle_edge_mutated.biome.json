@@ -1,0 +1,32 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "mutated": {},
+      "edge": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:crimson_hyphae",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:lapis_block",
+        "sea_floor_material": "minecraft:mossy_cobblestone",
+        "foundation_material": "minecraft:oak_stairs"
+      },
+      "overworld_generation": {},
+      "mooshroom_island": {},
+      "animal": {},
+      "minecraft:overworld_height": {"noise_type": "default_mutated"},
+      "jungle": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 0.95,
+        "downfall": 0.8
+      },
+      "monster": {}
+    },
+    "description": {"identifier": "jungle_edge_mutated"}
+  }
+}

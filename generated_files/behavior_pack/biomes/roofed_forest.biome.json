@@ -1,0 +1,42 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "forest": {},
+      "taiga": {},
+      "minecraft:overworld_height": {"noise_type": "default"},
+      "overworld": {},
+      "roofed": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 0.7,
+        "downfall": 0.8
+      },
+      "monster": {},
+      "no_legacy_worldgen": {},
+      "warm": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:lodestone",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:stripped_jungle_log",
+        "sea_floor_material": "minecraft:stripped_acacia_log",
+        "foundation_material": "minecraft:emerald_block"
+      },
+      "minecraft:overworld_generation_rules": {
+        "generate_for_climates": [[
+          "medium",
+          1
+        ]],
+        "hills_transformation": "plains",
+        "mutate_transformation": "roofed_forest_mutated"
+      },
+      "extreme_hills": {},
+      "animal": {}
+    },
+    "description": {"identifier": "roofed_forest"}
+  }
+}

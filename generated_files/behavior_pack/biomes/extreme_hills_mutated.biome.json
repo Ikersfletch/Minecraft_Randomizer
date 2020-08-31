@@ -1,0 +1,56 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "mutated": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:gilded_blackstone",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:soul_soil",
+        "sea_floor_material": "minecraft:crimson_planks",
+        "foundation_material": "minecraft:crimson_stem"
+      },
+      "extreme_hills": {},
+      "minecraft:surface_material_adjustments": {"adjustments": [
+        {
+          "noise_range": [
+            -1,
+            -0.012
+          ],
+          "materials": {
+            "top_material": "minecraft:gravel",
+            "mid_material": "minecraft:gravel"
+          },
+          "noise_frequency_scale": 0.0625
+        },
+        {
+          "noise_range": [
+            0.024,
+            1
+          ],
+          "materials": {
+            "top_material": "minecraft:gravel",
+            "mid_material": "minecraft:gravel"
+          },
+          "noise_frequency_scale": 0.0625
+        }
+      ]},
+      "beach": {},
+      "savanna": {},
+      "animal": {},
+      "minecraft:overworld_height": {"noise_type": "extreme"},
+      "overworld": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 0.2,
+        "downfall": 0.3
+      },
+      "monster": {}
+    },
+    "description": {"identifier": "extreme_hills_mutated"}
+  }
+}

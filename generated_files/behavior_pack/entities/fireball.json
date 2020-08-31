@@ -1,0 +1,413 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:on_friendly_anger": {
+        "event": "minecraft:defend_wandering_trader",
+        "target": "self"
+      },
+      "minecraft:physics": {},
+      "minecraft:behavior.random_hover": {
+        "xz_dist": 8,
+        "hover_height": [
+          1,
+          4
+        ],
+        "y_dist": 8,
+        "interval": 1,
+        "priority": 12,
+        "y_offset": -1
+      },
+      "minecraft:timer": {
+        "looping": false,
+        "time_down_event": {"event": "become_zombie_event"},
+        "time": 15
+      },
+      "minecraft:rideable": {
+        "family_types": ["zombie"],
+        "interact_text": "action.interact.ride.horse",
+        "seat_count": 1,
+        "seats": {"position": [
+          0,
+          1.2,
+          -0.2
+        ]}
+      },
+      "minecraft:behavior.send_event": {
+        "event_choices": [{
+          "cooldown_time": 5,
+          "sequence": [{
+            "base_delay": 2,
+            "sound_event": "prepare.wololo",
+            "event": "wololo"
+          }],
+          "particle_color": "#FFB38033",
+          "min_activation_range": 0,
+          "weight": 3,
+          "start_sound_event": "cast.spell",
+          "filters": {"all_of": [
+            {
+              "test": "is_family",
+              "subject": "other",
+              "value": "sheep"
+            },
+            {
+              "test": "is_color",
+              "subject": "other",
+              "value": "blue"
+            }
+          ]},
+          "cast_duration": 3,
+          "max_activation_range": 16
+        }],
+        "priority": 3
+      },
+      "minecraft:behavior.enderman_take_block": {"priority": 11},
+      "minecraft:loot": {"table": "loot_tables/entities/zombie.json"},
+      "minecraft:behavior.random_swim": {
+        "xz_dist": 30,
+        "y_dist": 15,
+        "interval": 0,
+        "priority": 7
+      },
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:behavior.breed": {
+        "speed_multiplier": 1,
+        "priority": 3
+      },
+      "minecraft:behavior.eat_block": {
+        "time_until_eat": 1.8,
+        "priority": 6,
+        "eat_and_replace_block_pairs": [
+          {
+            "replace_block": "dirt",
+            "eat_block": "grass"
+          },
+          {
+            "replace_block": "air",
+            "eat_block": "tallgrass"
+          }
+        ],
+        "on_eat": {
+          "event": "minecraft:on_eat_block",
+          "target": "self"
+        },
+        "success_chance": "query.is_baby ? 0.02 : 0.001"
+      },
+      "minecraft:mark_variant": {"value": 1},
+      "minecraft:projectile": {
+        "inertia": 1,
+        "catch_fire": true,
+        "uncertainty_base": 0,
+        "uncertainty_multiplier": 0,
+        "offset": [
+          0,
+          -0.1,
+          0
+        ],
+        "gravity": 0,
+        "liquid_inertia": 1,
+        "on_hit": {"definition_event": {
+          "event_trigger": {
+            "event": "minecraft:explode",
+            "target": "self"
+          },
+          "affect_projectile": true
+        }},
+        "anchor": 1,
+        "power": 1.6,
+        "reflect_on_hurt": true
+      },
+      "minecraft:ageable": {
+        "duration": 1200,
+        "grow_up": {
+          "event": "minecraft:ageable_grow_up",
+          "target": "self"
+        }
+      },
+      "minecraft:behavior.panic": {
+        "speed_multiplier": 2,
+        "priority": 2
+      },
+      "minecraft:shareables": {"items": [
+        {
+          "item": "minecraft:netherite_sword",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 0
+        },
+        {
+          "item": "minecraft:diamond_sword",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 1
+        },
+        {
+          "item": "minecraft:iron_sword",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 2
+        },
+        {
+          "item": "minecraft:stone_sword",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 3
+        },
+        {
+          "item": "minecraft:golden_sword",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 4
+        },
+        {
+          "item": "minecraft:wooden_sword",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 5
+        },
+        {
+          "item": "minecraft:bow",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 6
+        },
+        {
+          "item": "minecraft:netherite_helmet",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 0
+        },
+        {
+          "item": "minecraft:diamond_helmet",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 1
+        },
+        {
+          "item": "minecraft:iron_helmet",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 2
+        },
+        {
+          "item": "minecraft:chainmail_helmet",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 3
+        },
+        {
+          "item": "minecraft:golden_helmet",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 4
+        },
+        {
+          "item": "minecraft:leather_helmet",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 5
+        },
+        {
+          "item": "minecraft:turtle_helmet",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 6
+        },
+        {
+          "item": "minecraft:skull:0",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 7
+        },
+        {
+          "item": "minecraft:skull:1",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 7
+        },
+        {
+          "item": "minecraft:carved_pumpkin",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 7
+        },
+        {
+          "item": "minecraft:netherite_chestplate",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 0
+        },
+        {
+          "item": "minecraft:diamond_chestplate",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 1
+        },
+        {
+          "item": "minecraft:iron_chestplate",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 2
+        },
+        {
+          "item": "minecraft:chainmail_chestplate",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 3
+        },
+        {
+          "item": "minecraft:golden_chestplate",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 4
+        },
+        {
+          "item": "minecraft:leather_chestplate",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 5
+        },
+        {
+          "item": "minecraft:netherite_leggings",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 0
+        },
+        {
+          "item": "minecraft:diamond_leggings",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 1
+        },
+        {
+          "item": "minecraft:iron_leggings",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 2
+        },
+        {
+          "item": "minecraft:chainmail_leggings",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 3
+        },
+        {
+          "item": "minecraft:golden_leggings",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 4
+        },
+        {
+          "item": "minecraft:leather_leggings",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 5
+        },
+        {
+          "item": "minecraft:netherite_boots",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 0
+        },
+        {
+          "item": "minecraft:diamond_boots",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 1
+        },
+        {
+          "item": "minecraft:iron_boots",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 2
+        },
+        {
+          "item": "minecraft:chainmail_boots",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 3
+        },
+        {
+          "item": "minecraft:golden_boots",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 4
+        },
+        {
+          "item": "minecraft:leather_boots",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 5
+        }
+      ]},
+      "minecraft:navigation.fly": {
+        "can_path_over_water": true,
+        "can_path_from_air": true
+      },
+      "minecraft:barter": {
+        "cooldown_after_being_attacked": 20,
+        "barter_table": "loot_tables/entities/piglin_barter.json"
+      },
+      "minecraft:collision_box": {
+        "width": 0.31,
+        "height": 0.31
+      },
+      "minecraft:behavior.skeleton_horse_trap": {
+        "duration": 900,
+        "within_radius": 10,
+        "priority": 2
+      },
+      "minecraft:experience_reward": {"on_death": "query.last_hit_by_player ? 5 : 0"},
+      "minecraft:behavior.pet_sleep_with_owner": {
+        "search_radius": 10,
+        "speed_multiplier": 1.2,
+        "search_height": 10,
+        "goal_radius": 1,
+        "priority": 2
+      },
+      "minecraft:behavior.guardian_attack": {"priority": 4},
+      "minecraft:economy_trade_table": {
+        "new_screen": true,
+        "persist_trades": true,
+        "display_name": "entity.villager.tool",
+        "table": "trading/economy_trades/tool_smith_trades.json"
+      }
+    },
+    "component_groups": {"minecraft:exploding": {
+      "minecraft:explode": {
+        "fuse_lit": true,
+        "fire_affected_by_griefing": true,
+        "fuse_length": 0,
+        "power": 1,
+        "causes_fire": true,
+        "destroy_affected_by_griefing": true
+      },
+      "minecraft:healable": {"items": [
+        {
+          "item": "fish",
+          "heal_amount": 2
+        },
+        {
+          "item": "salmon",
+          "heal_amount": 2
+        }
+      ]},
+      "minecraft:scale_by_age": {
+        "start_scale": 0.5,
+        "end_scale": 1
+      },
+      "minecraft:behavior.trade_interest": {}
+    }},
+    "description": {
+      "identifier": "minecraft:fireball",
+      "is_spawnable": false,
+      "is_summonable": false,
+      "is_experimental": false
+    },
+    "events": {"minecraft:explode": {"add": {"component_groups": ["minecraft:exploding"]}}}
+  }
+}

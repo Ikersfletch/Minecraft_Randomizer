@@ -1,0 +1,575 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:behavior.owner_hurt_by_target": {"priority": 1},
+      "minecraft:physics": {},
+      "minecraft:inventory": {},
+      "minecraft:behavior.random_hover": {
+        "xz_dist": 8,
+        "hover_height": [
+          1,
+          4
+        ],
+        "y_dist": 8,
+        "interval": 1,
+        "priority": 12,
+        "y_offset": -1
+      },
+      "minecraft:movement.skip": {},
+      "minecraft:type_family": {"family": [
+        "minecart",
+        "inanimate"
+      ]},
+      "minecraft:behavior.random_fly": {
+        "avoid_damage_blocks": true,
+        "xz_dist": 15,
+        "y_dist": 1,
+        "speed_multiplier": 1,
+        "can_land_on_trees": true,
+        "priority": 2,
+        "y_offset": 0
+      },
+      "minecraft:color": {"value": 11},
+      "minecraft:behavior.enderman_take_block": {"priority": 11},
+      "minecraft:celebrate_hunt": {
+        "broadcast": true,
+        "duration": 10,
+        "celebration_targets": {"all_of": [{
+          "test": "is_family",
+          "value": "hoglin"
+        }]},
+        "sound_interval": {
+          "range_min": 2,
+          "range_max": 5
+        },
+        "radius": 16,
+        "celebrate_sound": "celebrate"
+      },
+      "minecraft:insomnia": {"days_until_insomnia": 3},
+      "minecraft:behavior.controlled_by_player": {
+        "mount_speed_multiplier": 1.45,
+        "priority": 0
+      },
+      "minecraft:loot": {"table": "loot_tables/entities/zombie_horse.json"},
+      "minecraft:rail_movement": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:behavior.follow_owner": {
+        "start_distance": 5,
+        "speed_multiplier": 1,
+        "priority": 2,
+        "stop_distance": 1
+      },
+      "minecraft:attack_damage": {"value": 4},
+      "minecraft:genetics": {
+        "mutation_rate": 0.03125,
+        "genes": [{
+          "allele_range": {
+            "range_min": 0,
+            "range_max": 15
+          },
+          "name": "panda_variant",
+          "genetic_variants": [
+            {
+              "main_allele": 0,
+              "birth_event": {
+                "event": "minecraft:panda_lazy",
+                "target": "self"
+              }
+            },
+            {
+              "main_allele": 1,
+              "birth_event": {
+                "event": "minecraft:panda_worried",
+                "target": "self"
+              }
+            },
+            {
+              "main_allele": 2,
+              "birth_event": {
+                "event": "minecraft:panda_playful",
+                "target": "self"
+              }
+            },
+            {
+              "main_allele": 3,
+              "birth_event": {
+                "event": "minecraft:panda_aggressive",
+                "target": "self"
+              }
+            },
+            {
+              "both_allele": {
+                "range_min": 4,
+                "range_max": 7
+              },
+              "birth_event": {
+                "event": "minecraft:panda_weak",
+                "target": "self"
+              }
+            },
+            {
+              "both_allele": {
+                "range_min": 8,
+                "range_max": 9
+              },
+              "birth_event": {
+                "event": "minecraft:panda_brown",
+                "target": "self"
+              }
+            }
+          ]
+        }]
+      },
+      "minecraft:mark_variant": {"value": 2},
+      "minecraft:behavior.target_when_pushed": {
+        "entity_types": [{"filters": {"all_of": [
+          {
+            "test": "is_family",
+            "subject": "other",
+            "value": "monster"
+          },
+          {
+            "test": "is_family",
+            "subject": "other",
+            "value": "creeper",
+            "operator": "!="
+          }
+        ]}}],
+        "percent_chance": 5,
+        "priority": 1
+      },
+      "minecraft:behavior.restrict_open_door": {"priority": 5},
+      "minecraft:shareables": {"items": [
+        {
+          "item": "minecraft:netherite_sword",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 0
+        },
+        {
+          "item": "minecraft:diamond_sword",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 0
+        },
+        {
+          "item": "minecraft:iron_sword",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 1
+        },
+        {
+          "item": "minecraft:stone_sword",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 2
+        },
+        {
+          "item": "minecraft:golden_sword",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 3
+        },
+        {
+          "item": "minecraft:wooden_sword",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 4
+        },
+        {
+          "item": "minecraft:netherite_helmet",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 0
+        },
+        {
+          "item": "minecraft:diamond_helmet",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 1
+        },
+        {
+          "item": "minecraft:iron_helmet",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 2
+        },
+        {
+          "item": "minecraft:chainmail_helmet",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 3
+        },
+        {
+          "item": "minecraft:golden_helmet",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 4
+        },
+        {
+          "item": "minecraft:leather_helmet",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 5
+        },
+        {
+          "item": "minecraft:turtle_helmet",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 6
+        },
+        {
+          "item": "minecraft:skull:0",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 7
+        },
+        {
+          "item": "minecraft:skull:1",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 7
+        },
+        {
+          "item": "minecraft:carved_pumpkin",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 7
+        },
+        {
+          "item": "minecraft:netherite_chestplate",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 0
+        },
+        {
+          "item": "minecraft:diamond_chestplate",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 1
+        },
+        {
+          "item": "minecraft:iron_chestplate",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 2
+        },
+        {
+          "item": "minecraft:chainmail_chestplate",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 3
+        },
+        {
+          "item": "minecraft:golden_chestplate",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 4
+        },
+        {
+          "item": "minecraft:leather_chestplate",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 5
+        },
+        {
+          "item": "minecraft:netherite_leggings",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 0
+        },
+        {
+          "item": "minecraft:diamond_leggings",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 1
+        },
+        {
+          "item": "minecraft:iron_leggings",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 2
+        },
+        {
+          "item": "minecraft:chainmail_leggings",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 3
+        },
+        {
+          "item": "minecraft:golden_leggings",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 4
+        },
+        {
+          "item": "minecraft:leather_leggings",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 5
+        },
+        {
+          "item": "minecraft:netherite_boots",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 0
+        },
+        {
+          "item": "minecraft:diamond_boots",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 1
+        },
+        {
+          "item": "minecraft:iron_boots",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 2
+        },
+        {
+          "item": "minecraft:chainmail_boots",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 3
+        },
+        {
+          "item": "minecraft:golden_boots",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 4
+        },
+        {
+          "item": "minecraft:leather_boots",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 5
+        }
+      ]},
+      "minecraft:behavior.knockback_roar": {
+        "duration": 1,
+        "cooldown_time": 0.1,
+        "knockback_filters": {
+          "test": "is_family",
+          "subject": "other",
+          "value": "ravager",
+          "operator": "!="
+        },
+        "damage_filters": {
+          "test": "is_family",
+          "subject": "other",
+          "value": "illager",
+          "operator": "!="
+        },
+        "attack_time": 0.5,
+        "on_roar_end": {"event": "minecraft:end_roar"},
+        "knockback_damage": 6,
+        "priority": 1,
+        "knockback_strength": 3,
+        "knockback_range": 4
+      },
+      "minecraft:barter": {
+        "cooldown_after_being_attacked": 20,
+        "barter_table": "loot_tables/entities/piglin_barter.json"
+      },
+      "minecraft:collision_box": {
+        "width": 0.98,
+        "height": 0.7
+      },
+      "minecraft:behavior.enderman_leave_block": {"priority": 10},
+      "minecraft:explode": {
+        "fuse_lit": true,
+        "fuse_length": 4,
+        "power": 3,
+        "causes_fire": false
+      },
+      "minecraft:behavior.nearest_prioritized_attackable_target": {
+        "target_search_height": 5,
+        "attack_interval": 2,
+        "entity_types": [
+          {
+            "max_dist": 12,
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "rabbit"
+            },
+            "priority": 0
+          },
+          {
+            "max_dist": 12,
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "chicken"
+            },
+            "priority": 0
+          },
+          {
+            "max_dist": 12,
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "cod"
+            },
+            "priority": 1
+          },
+          {
+            "max_dist": 12,
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "salmon"
+            },
+            "priority": 1
+          },
+          {
+            "max_dist": 12,
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "tropicalfish"
+            },
+            "priority": 1
+          },
+          {
+            "max_dist": 12,
+            "filters": {"all_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "baby_turtle"
+              },
+              {
+                "test": "in_water",
+                "subject": "other",
+                "value": true,
+                "operator": "!="
+              }
+            ]},
+            "priority": 0
+          }
+        ],
+        "priority": 6,
+        "reselect_targets": true
+      }
+    },
+    "component_groups": {
+      "minecraft:command_block_active": {
+        "minecraft:is_stunned": {},
+        "minecraft:behavior.squid_flee": {"priority": 2},
+        "minecraft:mark_variant": {"value": 1},
+        "minecraft:behavior.sneeze": {
+          "cooldown_time": 1,
+          "drop_item_chance": 0.001,
+          "probability": 1.666E-4,
+          "sound": "sneeze",
+          "entity_types": [{
+            "max_dist": 10,
+            "filters": {"all_of": [
+              {
+                "test": "has_component",
+                "subject": "other",
+                "value": "minecraft:is_baby",
+                "operator": "!="
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "panda"
+              },
+              {
+                "test": "in_water",
+                "subject": "other",
+                "value": true,
+                "operator": "!="
+              },
+              {
+                "test": "on_ground",
+                "value": true,
+                "operator": "=="
+              }
+            ]}
+          }],
+          "prepare_time": 1,
+          "within_radius": 10,
+          "priority": 7,
+          "loot_table": "loot_tables/entities/panda_sneeze.json",
+          "prepare_sound": "presneeze"
+        },
+        "minecraft:behavior.share_items": {
+          "speed_multiplier": 0.5,
+          "entity_types": [{"filters": {
+            "test": "is_family",
+            "subject": "other",
+            "value": "villager"
+          }}],
+          "goal_radius": 2,
+          "max_dist": 3,
+          "priority": 8
+        },
+        "minecraft:behavior.restrict_open_door": {"priority": 5},
+        "minecraft:rail_sensor": {
+          "eject_on_deactivate": false,
+          "tick_command_block_on_activate": true,
+          "eject_on_activate": false,
+          "check_block_types": true,
+          "tick_command_block_on_deactivate": false,
+          "on_deactivate": {"event": "minecraft:command_block_deactivate"}
+        },
+        "minecraft:behavior.snacking": {
+          "snacking_cooldown_min": 10,
+          "snacking_stop_chance": 0.0011,
+          "snacking_cooldown": 17.5,
+          "priority": 3,
+          "items": [
+            "bamboo",
+            "cake"
+          ]
+        }
+      },
+      "minecraft:command_block_inactive": {
+        "minecraft:behavior.follow_parent": {
+          "speed_multiplier": 1.1,
+          "priority": 6
+        },
+        "minecraft:behavior.squid_dive": {"priority": 2},
+        "minecraft:rail_sensor": {
+          "eject_on_deactivate": false,
+          "tick_command_block_on_activate": true,
+          "eject_on_activate": false,
+          "check_block_types": false,
+          "tick_command_block_on_deactivate": false,
+          "on_activate": {"event": "minecraft:command_block_activate"}
+        },
+        "minecraft:behavior.player_ride_tamed": {},
+        "minecraft:behavior.random_breach": {
+          "cooldown_time": 2,
+          "xz_dist": 6,
+          "interval": 50,
+          "priority": 6
+        }
+      }
+    },
+    "description": {
+      "identifier": "minecraft:command_block_minecart",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "events": {
+      "minecraft:command_block_activate": {
+        "add": {"component_groups": ["minecraft:command_block_active"]},
+        "remove": {"component_groups": ["minecraft:command_block_inactive"]}
+      },
+      "minecraft:entity_spawned": {"add": {"component_groups": ["minecraft:command_block_inactive"]}},
+      "minecraft:command_block_deactivate": {
+        "add": {"component_groups": ["minecraft:command_block_inactive"]},
+        "remove": {"component_groups": ["minecraft:command_block_active"]}
+      }
+    }
+  }
+}

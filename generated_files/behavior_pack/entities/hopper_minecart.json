@@ -1,0 +1,280 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:behavior.move_to_random_block": {
+        "speed_multiplier": 0.55,
+        "block_distance": 512,
+        "within_radius": 8,
+        "priority": 6
+      },
+      "minecraft:behavior.summon_entity": {
+        "summon_choices": [
+          {
+            "cooldown_time": 5,
+            "sequence": [
+              {
+                "base_delay": 1,
+                "entity_type": "minecraft:evocation_fang",
+                "shape": "circle",
+                "size": 1.5,
+                "entity_lifespan": 1.1,
+                "sound_event": "prepare.attack",
+                "num_entities_spawned": 5,
+                "target": "self",
+                "delay_per_summon": 0
+              },
+              {
+                "base_delay": 0.15,
+                "entity_type": "minecraft:evocation_fang",
+                "shape": "circle",
+                "size": 2.5,
+                "entity_lifespan": 1.1,
+                "num_entities_spawned": 8,
+                "target": "self",
+                "delay_per_summon": 0
+              }
+            ],
+            "particle_color": "#FF664D59",
+            "min_activation_range": 0,
+            "weight": 3,
+            "start_sound_event": "cast.spell",
+            "cast_duration": 2,
+            "max_activation_range": 3
+          },
+          {
+            "cooldown_time": 5,
+            "sequence": [{
+              "base_delay": 1,
+              "entity_type": "minecraft:evocation_fang",
+              "shape": "line",
+              "size": 20,
+              "entity_lifespan": 1.1,
+              "num_entities_spawned": 16,
+              "target": "self",
+              "delay_per_summon": 0.05
+            }],
+            "particle_color": "#FF664D59",
+            "min_activation_range": 3,
+            "weight": 3,
+            "start_sound_event": "cast.spell",
+            "cast_duration": 2
+          },
+          {
+            "cooldown_time": 17,
+            "sequence": [{
+              "base_delay": 5,
+              "entity_type": "minecraft:vex",
+              "summon_cap_radius": 16,
+              "shape": "circle",
+              "summon_cap": 8,
+              "size": 1,
+              "sound_event": "prepare.summon",
+              "num_entities_spawned": 3,
+              "target": "self"
+            }],
+            "particle_color": "#FFB3B3CC",
+            "weight": 1,
+            "cast_duration": 5
+          }
+        ],
+        "priority": 2
+      },
+      "minecraft:physics": {},
+      "minecraft:inventory": {
+        "inventory_size": 5,
+        "can_be_siphoned_from": true,
+        "container_type": "minecart_hopper"
+      },
+      "minecraft:behavior.roll": {
+        "probability": 0.013,
+        "priority": 12
+      },
+      "minecraft:behavior.breed": {
+        "speed_multiplier": 1,
+        "priority": 2
+      },
+      "minecraft:is_stackable": {},
+      "minecraft:movement.fly": {},
+      "minecraft:timer": {
+        "looping": false,
+        "time_down_event": {"event": "become_zombie_event"},
+        "time": 15
+      },
+      "minecraft:behavior.beg": {
+        "look_time": [
+          2,
+          4
+        ],
+        "look_distance": 8,
+        "priority": 9,
+        "items": [
+          "bone",
+          "porkchop",
+          "cooked_porkchop",
+          "chicken",
+          "cooked_chicken",
+          "beef",
+          "cooked_beef",
+          "rotten_flesh",
+          "muttonraw",
+          "muttoncooked",
+          "rabbit",
+          "cooked_rabbit"
+        ]
+      },
+      "minecraft:is_saddled": {},
+      "minecraft:type_family": {"family": [
+        "minecart",
+        "inanimate"
+      ]},
+      "minecraft:behavior.random_breach": {
+        "cooldown_time": 2,
+        "xz_dist": 6,
+        "interval": 50,
+        "priority": 6
+      },
+      "minecraft:behavior.mingle": {},
+      "minecraft:collision_box": {
+        "width": 0.98,
+        "height": 0.7
+      },
+      "minecraft:on_start_landing": {
+        "event": "minecraft:start_land",
+        "target": "self"
+      },
+      "minecraft:hide": {},
+      "minecraft:loot": {"table": "loot_tables/entities/iron_golem.json"},
+      "minecraft:behavior.random_swim": {
+        "avoid_surface": false,
+        "speed_multiplier": 1,
+        "interval": 80,
+        "priority": 7
+      },
+      "minecraft:horse.jump_strength": {"value": 0.5},
+      "minecraft:rail_movement": {},
+      "minecraft:behavior.scared": {
+        "sound_interval": 20,
+        "priority": 1
+      },
+      "minecraft:custom_hit_test": {"hitboxes": [{
+        "width": 2,
+        "pivot": [
+          0,
+          1,
+          0
+        ],
+        "height": 1.75
+      }]},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      }
+    },
+    "component_groups": {
+      "minecraft:hopper_inactive": {
+        "minecraft:jump.static": {},
+        "minecraft:bribeable": {"bribe_items": [
+          "fish",
+          "salmon"
+        ]},
+        "minecraft:teleport": {
+          "random_teleports": true,
+          "max_random_teleport_time": 30,
+          "target_distance": 16,
+          "light_teleport_chance": 0.05,
+          "target_teleport_chance": 0.05,
+          "random_teleport_cube": [
+            32,
+            32,
+            32
+          ]
+        },
+        "minecraft:movement.fly": {},
+        "minecraft:custom_hit_test": {"hitboxes": [{
+          "width": 1,
+          "pivot": [
+            0,
+            0.5,
+            0
+          ],
+          "height": 0.85
+        }]},
+        "minecraft:rail_sensor": {"on_deactivate": {"event": "minecraft:hopper_activate"}}
+      },
+      "minecraft:hopper_active": {
+        "minecraft:raid_trigger": {"triggered_event": {
+          "event": "minecraft:remove_raid_trigger",
+          "target": "self"
+        }},
+        "minecraft:area_attack": {
+          "damage_per_tick": 2,
+          "damage_range": 0.2,
+          "entity_filter": {"any_of": [
+            {
+              "test": "is_family",
+              "subject": "other",
+              "value": "player"
+            },
+            {
+              "test": "is_family",
+              "subject": "other",
+              "value": "monster"
+            }
+          ]},
+          "cause": "contact"
+        },
+        "minecraft:behavior.swim_wander": {
+          "wander_time": 5,
+          "look_ahead": 2,
+          "speed_multiplier": 1,
+          "interval": 0.1,
+          "priority": 4
+        },
+        "minecraft:item_hopper": {},
+        "minecraft:is_saddled": {},
+        "minecraft:rail_sensor": {"on_activate": {"event": "minecraft:hopper_deactivate"}},
+        "minecraft:behavior.knockback_roar": {
+          "duration": 1,
+          "cooldown_time": 0.1,
+          "knockback_filters": {
+            "test": "is_family",
+            "subject": "other",
+            "value": "ravager",
+            "operator": "!="
+          },
+          "damage_filters": {
+            "test": "is_family",
+            "subject": "other",
+            "value": "illager",
+            "operator": "!="
+          },
+          "attack_time": 0.5,
+          "on_roar_end": {"event": "minecraft:end_roar"},
+          "knockback_damage": 6,
+          "priority": 1,
+          "knockback_strength": 3,
+          "knockback_range": 4
+        },
+        "minecraft:can_power_jump": {}
+      }
+    },
+    "description": {
+      "identifier": "minecraft:hopper_minecart",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "events": {
+      "minecraft:hopper_deactivate": {
+        "add": {"component_groups": ["minecraft:hopper_inactive"]},
+        "remove": {"component_groups": ["minecraft:hopper_active"]}
+      },
+      "minecraft:entity_spawned": {"add": {"component_groups": ["minecraft:hopper_active"]}},
+      "minecraft:hopper_activate": {
+        "add": {"component_groups": ["minecraft:hopper_active"]},
+        "remove": {"component_groups": ["minecraft:hopper_inactive"]}
+      }
+    }
+  }
+}

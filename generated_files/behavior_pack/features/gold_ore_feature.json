@@ -1,0 +1,91 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:ore_feature": {
+    "may_replace": [
+      {
+        "name": "minecraft:stone",
+        "states": {"stone_type": "andesite"}
+      },
+      {
+        "name": "minecraft:stone",
+        "states": {"stone_type": "andesite_smooth"}
+      },
+      {
+        "name": "minecraft:stone",
+        "states": {"stone_type": "diorite"}
+      },
+      {
+        "name": "minecraft:stone",
+        "states": {"stone_type": "diorite_smooth"}
+      },
+      {
+        "name": "minecraft:stone",
+        "states": {"stone_type": "granite"}
+      },
+      {
+        "name": "minecraft:stone",
+        "states": {"stone_type": "granite_smooth"}
+      },
+      {
+        "name": "minecraft:stone",
+        "states": {"stone_type": "stone"}
+      },
+      "minecraft:warped_stem",
+      "minecraft:stripped_birch_log",
+      "minecraft:purpur_block",
+      "minecraft:log",
+      "minecraft:warped_fungus",
+      "minecraft:warped_nylium",
+      "minecraft:hardened_clay",
+      "minecraft:stripped_warped_hyphae",
+      "minecraft:end_rod",
+      "minecraft:dried_kelp_block",
+      "minecraft:stripped_warped_stem",
+      "minecraft:cartography_table",
+      "minecraft:stripped_spruce_log",
+      "minecraft:target",
+      "minecraft:magma",
+      "minecraft:snow",
+      "minecraft:stripped_crimson_hyphae",
+      "minecraft:cracked_polished_blackstone_bricks",
+      "minecraft:purple_glazed_terracotta",
+      "minecraft:crimson_hyphae",
+      "minecraft:melon_block",
+      "minecraft:netherite_block",
+      "minecraft:crimson_stem",
+      "minecraft:bone_block",
+      "minecraft:lapis_ore",
+      "minecraft:coral_block",
+      "minecraft:ancient_debris",
+      "minecraft:oak_stairs",
+      "minecraft:emerald_block",
+      "minecraft:lodestone",
+      "minecraft:glowingobsidian",
+      "minecraft:honeycomb_block",
+      "minecraft:redstone_lamp",
+      "minecraft:stripped_crimson_stem",
+      "minecraft:netherreactor",
+      "minecraft:glass",
+      "minecraft:gray_glazed_terracotta",
+      "minecraft:cracked_nether_bricks",
+      "minecraft:pumpkin",
+      "minecraft:quartz_block",
+      "minecraft:red_mushroom_block",
+      "minecraft:carved_pumpkin",
+      "minecraft:blackstone",
+      "minecraft:stained_glass",
+      "minecraft:grass",
+      "minecraft:red_glazed_terracotta",
+      "minecraft:mycelium",
+      "minecraft:end_stone",
+      "minecraft:furnace",
+      "minecraft:stripped_oak_log",
+      "minecraft:gravel",
+      "minecraft:sandstone",
+      "minecraft:cyan_glazed_terracotta"
+    ],
+    "count": 26,
+    "description": {"identifier": "minecraft:gold_ore_feature"},
+    "places_block": "minecraft:gold_block"
+  }
+}

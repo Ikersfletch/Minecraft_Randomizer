@@ -1,0 +1,37 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "mutated": {},
+      "deep": {},
+      "nether": {},
+      "ice_plains": {},
+      "overworld_generation": {},
+      "minecraft:overworld_height": {"noise_type": "default"},
+      "overworld": {},
+      "nether_wastes": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 0.95,
+        "downfall": 0.9
+      },
+      "monster": {},
+      "bamboo": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "top_material": "minecraft:leaves2",
+        "sea_material": "minecraft:water",
+        "mid_material": "minecraft:polished_blackstone_bricks",
+        "sea_floor_material": "minecraft:leaves2",
+        "foundation_material": "minecraft:warped_stem"
+      },
+      "minecraft:overworld_generation_rules": {"hills_transformation": "bamboo_jungle_hills"},
+      "animal": {},
+      "jungle": {}
+    },
+    "description": {"identifier": "bamboo_jungle"}
+  }
+}

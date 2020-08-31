@@ -1,0 +1,13 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "project_input_to_floor": false,
+    "scatter_chance": 50,
+    "x": 0,
+    "description": {"identifier": "minecraft:optional_log_brown_mushroom_feature"},
+    "y": 0,
+    "z": 0,
+    "places_feature": "minecraft:brown_mushroom_feature",
+    "iterations": 1
+  }
+}

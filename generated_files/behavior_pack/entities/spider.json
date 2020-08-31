@@ -1,0 +1,1023 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "components": {
+      "minecraft:jump.static": {},
+      "minecraft:movement.hover": {},
+      "minecraft:physics": {},
+      "minecraft:behavior.delayed_attack": {
+        "hit_delay_pct": 0.5,
+        "attack_duration": 0.75,
+        "reach_multiplier": 1.5,
+        "track_target": true,
+        "random_stop_interval": 0,
+        "speed_multiplier": 1,
+        "attack_once": false,
+        "priority": 4,
+        "require_complete_path": false
+      },
+      "minecraft:nameable": {},
+      "minecraft:behavior.mount_pathing": {
+        "speed_multiplier": 1.25,
+        "track_target": true,
+        "priority": 5,
+        "target_dist": 0
+      },
+      "minecraft:can_climb": {},
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0
+      },
+      "minecraft:behavior.beg": {
+        "look_time": [
+          2,
+          4
+        ],
+        "look_distance": 8,
+        "priority": 9,
+        "items": [
+          "bone",
+          "porkchop",
+          "cooked_porkchop",
+          "chicken",
+          "cooked_chicken",
+          "beef",
+          "cooked_beef",
+          "rotten_flesh",
+          "muttonraw",
+          "muttoncooked",
+          "rabbit",
+          "cooked_rabbit"
+        ]
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:rideable": {
+        "family_types": ["zombie"],
+        "seat_count": 1,
+        "seats": {"position": [
+          0,
+          0.54,
+          -0.1
+        ]}
+      },
+      "minecraft:type_family": {"family": [
+        "spider",
+        "monster",
+        "mob",
+        "arthropod"
+      ]},
+      "minecraft:behavior.look_at_player": {
+        "probability": 0.02,
+        "look_distance": 6,
+        "priority": 7
+      },
+      "minecraft:on_hurt_by_player": {
+        "event": "minecraft:ranged_mode",
+        "target": "self"
+      },
+      "minecraft:preferred_path": {
+        "jump_cost": 5,
+        "max_fall_blocks": 1,
+        "default_block_cost": 1.5,
+        "preferred_path_blocks": [
+          {
+            "cost": 0,
+            "blocks": ["grass_path"]
+          },
+          {
+            "cost": 1,
+            "blocks": [
+              "cobblestone",
+              "stone",
+              "stonebrick",
+              "sandstone",
+              "mossy_cobblestone",
+              "stone_slab",
+              "stone_slab2",
+              "stone_slab3",
+              "stone_slab4",
+              "double_stone_slab",
+              "double_stone_slab2",
+              "double_stone_slab3",
+              "double_stone_slab4",
+              "wooden_slab",
+              "double_wooden_slab",
+              "planks",
+              "brick_block",
+              "nether_brick",
+              "red_nether_brick",
+              "end_bricks",
+              "red_sandstone",
+              "stained_glass",
+              "glass",
+              "glowstone",
+              "prismarine",
+              "emerald_block",
+              "diamond_block",
+              "lapis_block",
+              "gold_block",
+              "redstone_block",
+              "purple_glazed_terracotta",
+              "white_glazed_terracotta",
+              "orange_glazed_terracotta",
+              "magenta_glazed_terracotta",
+              "light_blue_glazed_terracotta",
+              "yellow_glazed_terracotta",
+              "lime_glazed_terracotta",
+              "pink_glazed_terracotta",
+              "gray_glazed_terracotta",
+              "silver_glazed_terracotta",
+              "cyan_glazed_terracotta",
+              "blue_glazed_terracotta",
+              "brown_glazed_terracotta",
+              "green_glazed_terracotta",
+              "red_glazed_terracotta",
+              "black_glazed_terracotta"
+            ]
+          },
+          {
+            "cost": 50,
+            "blocks": [
+              "bed",
+              "lectern",
+              "composter",
+              "grindstone",
+              "blast_furnace",
+              "smoker",
+              "fletching_table",
+              "cartography_table",
+              "brewing_stand",
+              "smithing_table",
+              "cauldron",
+              "barrel",
+              "loom",
+              "stonecutter"
+            ]
+          }
+        ]
+      },
+      "minecraft:behavior.avoid_mob_type": {
+        "entity_types": [{
+          "max_dist": 3,
+          "filters": {
+            "test": "is_family",
+            "subject": "other",
+            "value": "player"
+          },
+          "max_flee": 10,
+          "walk_speed_multiplier": 1.5,
+          "sprint_speed_multiplier": 2
+        }],
+        "priority": 1
+      },
+      "minecraft:loot": {"table": "loot_tables/entities/pillager.json"},
+      "minecraft:behavior.explore_outskirts": {},
+      "minecraft:player.level": {
+        "max": 24791,
+        "value": 0
+      },
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:admire_item": {
+        "duration": 8,
+        "cooldown_after_being_attacked": 20
+      },
+      "minecraft:behavior.random_stroll": {
+        "speed_multiplier": 0.8,
+        "priority": 6
+      },
+      "minecraft:behavior.random_look_around": {"priority": 7},
+      "minecraft:behavior.leap_at_target": {
+        "priority": 4,
+        "target_dist": 0.4
+      },
+      "minecraft:navigation.climb": {"can_path_over_water": true},
+      "minecraft:health": {
+        "max": 16,
+        "value": 16
+      },
+      "minecraft:behavior.target_when_pushed": {
+        "entity_types": [{"filters": {"all_of": [
+          {
+            "test": "is_family",
+            "subject": "other",
+            "value": "monster"
+          },
+          {
+            "test": "is_family",
+            "subject": "other",
+            "value": "creeper",
+            "operator": "!="
+          }
+        ]}}],
+        "percent_chance": 5,
+        "priority": 1
+      },
+      "minecraft:shareables": {"items": [
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:golden_sword",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:golden_axe",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:golden_hoe",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:golden_pickaxe",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:golden_shovel",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:golden_rail",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:golden_helmet",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:golden_chestplate",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:golden_leggings",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:golden_boots",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:golden_apple",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:appleEnchanted",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:golden_carrot",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:gold_block",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "item": "minecraft:gold_nugget",
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:gold_ore",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:nether_gold_ore",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:gilded_blackstone",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:horsearmorgold",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "item": "minecraft:crossbow",
+          "priority": 2
+        },
+        {
+          "item": "minecraft:porkchop",
+          "consume_item": true,
+          "max_amount": 64,
+          "priority": 3
+        },
+        {
+          "item": "minecraft:cooked_porkchop",
+          "consume_item": true,
+          "max_amount": 64,
+          "priority": 3
+        },
+        {
+          "item": "minecraft:netherite_helmet",
+          "priority": 3
+        },
+        {
+          "item": "minecraft:diamond_helmet",
+          "priority": 4
+        },
+        {
+          "item": "minecraft:iron_helmet",
+          "priority": 5
+        },
+        {
+          "item": "minecraft:chainmail_helmet",
+          "priority": 6
+        },
+        {
+          "item": "minecraft:leather_helmet",
+          "priority": 7
+        },
+        {
+          "item": "minecraft:skull:0",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 8
+        },
+        {
+          "item": "minecraft:skull:1",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 8
+        },
+        {
+          "item": "minecraft:carved_pumpkin",
+          "want_amount": 1,
+          "surplus_amount": 1,
+          "priority": 8
+        },
+        {
+          "item": "minecraft:netherite_chestplate",
+          "priority": 3
+        },
+        {
+          "item": "minecraft:diamond_chestplate",
+          "priority": 4
+        },
+        {
+          "item": "minecraft:iron_chestplate",
+          "priority": 5
+        },
+        {
+          "item": "minecraft:chainmail_chestplate",
+          "priority": 6
+        },
+        {
+          "item": "minecraft:leather_chestplate",
+          "priority": 7
+        },
+        {
+          "item": "minecraft:netherite_leggings",
+          "priority": 3
+        },
+        {
+          "item": "minecraft:diamond_leggings",
+          "priority": 4
+        },
+        {
+          "item": "minecraft:iron_leggings",
+          "priority": 5
+        },
+        {
+          "item": "minecraft:chainmail_leggings",
+          "priority": 6
+        },
+        {
+          "item": "minecraft:leather_leggings",
+          "priority": 7
+        },
+        {
+          "item": "minecraft:netherite_boots",
+          "priority": 3
+        },
+        {
+          "item": "minecraft:diamond_boots",
+          "priority": 4
+        },
+        {
+          "item": "minecraft:iron_boots",
+          "priority": 5
+        },
+        {
+          "item": "minecraft:chainmail_boots",
+          "priority": 6
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:bell",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:clock",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:speckled_melon",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:light_weighted_pressure_plate",
+          "admire": true,
+          "stored_in_inventory": true,
+          "priority": 2
+        },
+        {
+          "item": "minecraft:leather_boots",
+          "priority": 7
+        },
+        {
+          "item": "minecraft:netherite_sword",
+          "priority": 3
+        },
+        {
+          "item": "minecraft:diamond_sword",
+          "priority": 4
+        },
+        {
+          "item": "minecraft:iron_sword",
+          "priority": 5
+        },
+        {
+          "item": "minecraft:stone_sword",
+          "priority": 6
+        },
+        {
+          "item": "minecraft:wooden_sword",
+          "priority": 7
+        },
+        {
+          "pickup_limit": 1,
+          "item": "minecraft:gold_ingot",
+          "admire": true,
+          "barter": true,
+          "priority": 1
+        }
+      ]},
+      "minecraft:behavior.go_home": {
+        "speed_multiplier": 1,
+        "goal_radius": 1.2,
+        "interval": 1,
+        "on_home": [
+          {
+            "filters": {"any_of": [
+              {
+                "test": "is_block",
+                "subject": "block",
+                "value": "minecraft:bee_nest"
+              },
+              {
+                "test": "is_block",
+                "subject": "block",
+                "value": "minecraft:beehive"
+              }
+            ]},
+            "event": "minecraft:bee_returned_to_hive",
+            "target": "block"
+          },
+          {
+            "filters": {"all_of": [
+              {
+                "test": "is_block",
+                "subject": "block",
+                "value": "minecraft:bee_nest",
+                "operator": "!="
+              },
+              {
+                "test": "is_block",
+                "subject": "block",
+                "value": "minecraft:beehive",
+                "operator": "!="
+              }
+            ]},
+            "event": "find_hive_event",
+            "target": "self"
+          }
+        ],
+        "priority": 4,
+        "on_failed": {
+          "event": "find_hive_event",
+          "target": "self"
+        }
+      },
+      "minecraft:behavior.hurt_by_target": {"priority": 1},
+      "minecraft:collision_box": {
+        "width": 1.4,
+        "height": 0.9
+      },
+      "minecraft:movement": {"value": 0.3},
+      "minecraft:despawn": {"despawn_from_distance": {}},
+      "minecraft:behavior.float": {"priority": 1},
+      "minecraft:experience_reward": {"on_death": "query.last_hit_by_player ? 5 : 0"},
+      "minecraft:behavior.move_to_land": {
+        "search_range": 16,
+        "search_height": 5,
+        "goal_radius": 0.5,
+        "priority": 6
+      },
+      "minecraft:hurt_on_condition": {"damage_conditions": [{
+        "damage_per_tick": 4,
+        "cause": "lava",
+        "filters": {
+          "test": "in_lava",
+          "subject": "self",
+          "value": true,
+          "operator": "=="
+        }
+      }]},
+      "minecraft:lookat": {
+        "search_radius": 64,
+        "set_target": true,
+        "look_cooldown": 5,
+        "filters": {"all_of": [
+          {
+            "test": "is_family",
+            "subject": "other",
+            "value": "player"
+          },
+          {
+            "test": "has_equipment",
+            "subject": "other",
+            "domain": "head",
+            "value": "carved_pumpkin",
+            "operator": "not"
+          }
+        ]}
+      },
+      "minecraft:attack": {"damage": 3},
+      "minecraft:on_hurt": {
+        "event": "minecraft:ranged_mode",
+        "target": "self"
+      }
+    },
+    "component_groups": {
+      "minecraft:spider_stray_jockey": {
+        "minecraft:block_sensor": {
+          "sensor_radius": 16,
+          "on_break": [{
+            "on_block_broken": "hive_destroyed",
+            "block_list": [
+              "minecraft:beehive",
+              "minecraft:bee_nest"
+            ]
+          }]
+        },
+        "minecraft:behavior.move_towards_target": {
+          "speed_multiplier": 0.9,
+          "within_radius": 32,
+          "priority": 2
+        },
+        "minecraft:managed_wandering_trader": {},
+        "minecraft:is_tamed": {},
+        "minecraft:custom_hit_test": {"hitboxes": [{
+          "width": 2,
+          "pivot": [
+            0,
+            1,
+            0
+          ],
+          "height": 1.75
+        }]},
+        "minecraft:behavior.ocelot_sit_on_block": {
+          "speed_multiplier": 1,
+          "priority": 7
+        },
+        "minecraft:addrider": {"entity_type": "minecraft:skeleton.stray"},
+        "minecraft:rideable": {
+          "family_types": ["skeleton"],
+          "seat_count": 1,
+          "seats": {"position": [
+            0,
+            0.54,
+            0
+          ]}
+        },
+        "minecraft:behavior.random_sitting": {
+          "min_sit_time": 10,
+          "cooldown": 30,
+          "start_chance": 0.01,
+          "stop_chance": 0.3,
+          "priority": 5
+        }
+      },
+      "minecraft:spider_wither_jockey": {
+        "minecraft:behavior.find_mount": {
+          "start_delay": 100,
+          "avoid_water": true,
+          "mount_distance": 2,
+          "within_radius": 16,
+          "priority": 3,
+          "target_needed": false
+        },
+        "minecraft:addrider": {"entity_type": "minecraft:skeleton.wither"},
+        "minecraft:angry": {
+          "duration": 10,
+          "duration_delta": 3,
+          "calm_event": {
+            "event": "minecraft:become_calm",
+            "target": "self"
+          }
+        },
+        "minecraft:rideable": {
+          "family_types": ["skeleton"],
+          "seat_count": 1,
+          "seats": {"position": [
+            0,
+            0.54,
+            0
+          ]}
+        },
+        "minecraft:on_hurt": {
+          "event": "minecraft:ranged_mode",
+          "target": "self"
+        }
+      },
+      "minecraft:spider_neutral": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "entity_types": [
+            {
+              "max_dist": 12,
+              "filters": {"any_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "player"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "snowgolem"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "irongolem"
+                },
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "wandering_trader"
+                }
+              ]}
+            },
+            {
+              "max_dist": 12,
+              "filters": {"all_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "villager"
+                },
+                {
+                  "test": "has_component",
+                  "subject": "other",
+                  "value": "minecraft:is_baby",
+                  "operator": "!="
+                }
+              ]}
+            }
+          ],
+          "must_see": true,
+          "within_radius": 12,
+          "priority": 2,
+          "must_see_forget_duration": 40
+        },
+        "minecraft:behavior.random_look_around": {"priority": 8},
+        "minecraft:home": {},
+        "minecraft:environment_sensor": {"triggers": {
+          "filters": {
+            "test": "is_brightness",
+            "value": 0.49,
+            "operator": "<"
+          },
+          "event": "minecraft:become_hostile"
+        }},
+        "minecraft:on_target_acquired": {"event": "minecraft:become_angry"},
+        "minecraft:behavior.pet_sleep_with_owner": {
+          "search_radius": 10,
+          "speed_multiplier": 1.2,
+          "search_height": 10,
+          "goal_radius": 1,
+          "priority": 2
+        },
+        "minecraft:behavior.drop_item_for": {
+          "search_range": 5,
+          "drop_item_chance": 0.7,
+          "max_dist": 5,
+          "time_of_day_range": [
+            0.74999,
+            0.8
+          ],
+          "priority": 1,
+          "search_count": 0,
+          "speed_multiplier": 1,
+          "entity_types": [{
+            "max_dist": 6,
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "player"
+            }
+          }],
+          "search_height": 2,
+          "goal_radius": 1,
+          "on_drop_attempt": {
+            "event": "minecraft:cat_gifted_owner",
+            "target": "self"
+          },
+          "offering_distance": 5,
+          "loot_table": "loot_tables/entities/cat_gift.json"
+        },
+        "minecraft:is_saddled": {}
+      },
+      "minecraft:spider_hostile": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "attack_interval": 5,
+          "entity_types": [{
+            "max_dist": 16,
+            "filters": {"any_of": [
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "player"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "snowgolem"
+              },
+              {
+                "test": "is_family",
+                "subject": "other",
+                "value": "irongolem"
+              }
+            ]}
+          }],
+          "must_see": true,
+          "priority": 2
+        },
+        "minecraft:behavior.charge_attack": {
+          "speed_multiplier": 2,
+          "priority": 4
+        },
+        "minecraft:environment_sensor": {"triggers": {
+          "filters": {
+            "test": "is_brightness",
+            "value": 0.49,
+            "operator": ">"
+          },
+          "event": "minecraft:become_neutral"
+        }},
+        "minecraft:on_target_acquired": {"event": "minecraft:become_angry"},
+        "minecraft:ravager_blocked": {
+          "reaction_choices": [
+            {
+              "weight": 1,
+              "value": {
+                "event": "minecraft:become_stunned",
+                "target": "self"
+              }
+            },
+            {"weight": 1}
+          ],
+          "knockback_strength": 3
+        },
+        "minecraft:can_power_jump": {}
+      },
+      "minecraft:spider_angry": {
+        "minecraft:behavior.leap_at_target": {
+          "must_be_on_ground": false,
+          "yd": 0.4,
+          "priority": 4
+        },
+        "minecraft:behavior.melee_attack": {
+          "reach_multiplier": 0.8,
+          "track_target": true,
+          "priority": 3
+        },
+        "minecraft:behavior.trade_with_player": {"priority": 1},
+        "minecraft:angry": {
+          "duration": 10,
+          "duration_delta": 3,
+          "calm_event": {
+            "event": "minecraft:become_calm",
+            "target": "self"
+          }
+        },
+        "minecraft:behavior.trade_interest": {
+          "carried_item_switch_time": 2,
+          "cooldown": 2,
+          "within_radius": 6,
+          "priority": 5,
+          "remove_item_time": 1,
+          "interest_time": 45
+        },
+        "minecraft:behavior.player_ride_tamed": {},
+        "minecraft:behavior.move_to_village": {
+          "speed_multiplier": 1,
+          "goal_radius": 2,
+          "priority": 5
+        }
+      },
+      "minecraft:spider_jockey": {
+        "minecraft:behavior.find_cover": {
+          "cooldown_time": 0,
+          "speed_multiplier": 1,
+          "priority": 0
+        },
+        "minecraft:behavior.open_door": {
+          "priority": 6,
+          "close_door_after": true
+        },
+        "minecraft:behavior.beg": {
+          "look_time": [
+            2,
+            4
+          ],
+          "look_distance": 8,
+          "priority": 9,
+          "items": [
+            "bone",
+            "porkchop",
+            "cooked_porkchop",
+            "chicken",
+            "cooked_chicken",
+            "beef",
+            "cooked_beef",
+            "rotten_flesh",
+            "muttonraw",
+            "muttoncooked",
+            "rabbit",
+            "cooked_rabbit"
+          ]
+        },
+        "minecraft:addrider": {"entity_type": "minecraft:skeleton"},
+        "minecraft:angry": {
+          "duration": 500,
+          "broadcast_anger": false,
+          "calm_event": {
+            "event": "minecraft:on_calm",
+            "target": "self"
+          },
+          "broadcast_range": 20
+        },
+        "minecraft:rideable": {
+          "family_types": ["skeleton"],
+          "seat_count": 1,
+          "seats": {"position": [
+            0,
+            0.54,
+            0
+          ]}
+        },
+        "minecraft:rail_sensor": {"eject_on_activate": true},
+        "minecraft:annotation.break_door": {}
+      }
+    },
+    "description": {
+      "identifier": "minecraft:spider",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "events": {
+      "minecraft:entity_spawned": {"randomize": [
+        {
+          "weight": 1,
+          "randomize": [
+            {
+              "add": {"component_groups": [
+                "minecraft:spider_stray_jockey",
+                "minecraft:spider_neutral"
+              ]},
+              "weight": 80,
+              "filters": {"all_of": [
+                {
+                  "test": "is_daytime",
+                  "value": false
+                },
+                {
+                  "test": "is_snow_covered",
+                  "value": true
+                },
+                {
+                  "test": "is_underground",
+                  "value": false
+                }
+              ]},
+              "remove": {}
+            },
+            {
+              "add": {"component_groups": [
+                "minecraft:spider_wither_jockey",
+                "minecraft:spider_neutral"
+              ]},
+              "weight": 80,
+              "filters": {
+                "test": "is_biome",
+                "value": "the_nether"
+              },
+              "remove": {}
+            },
+            {
+              "add": {"component_groups": [
+                "minecraft:spider_jockey",
+                "minecraft:spider_neutral"
+              ]},
+              "weight": 20,
+              "filters": {"any_of": [
+                {
+                  "test": "is_daytime",
+                  "value": false
+                },
+                {
+                  "test": "is_underground",
+                  "value": true
+                }
+              ]},
+              "remove": {}
+            }
+          ]
+        },
+        {
+          "add": {"component_groups": ["minecraft:spider_neutral"]},
+          "weight": 99,
+          "remove": {}
+        }
+      ]},
+      "minecraft:become_angry": {"add": {"component_groups": ["minecraft:spider_angry"]}},
+      "minecraft:become_neutral": {
+        "add": {"component_groups": ["minecraft:spider_neutral"]},
+        "remove": {"component_groups": ["minecraft:spider_hostile"]}
+      },
+      "minecraft:become_calm": {"remove": {"component_groups": ["minecraft:spider_angry"]}},
+      "minecraft:become_hostile": {
+        "add": {"component_groups": ["minecraft:spider_hostile"]},
+        "remove": {"component_groups": ["minecraft:spider_neutral"]}
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "minecraft:single_block_feature": {
+    "enforce_survivability_rules": true,
+    "description": {"identifier": "minecraft:fern_feature"},
+    "enforce_placement_rules": true,
+    "places_block": {
+      "name": "minecraft:stone",
+      "states": {}
+    }
+  },
+  "format_version": "1.13.0"
+}

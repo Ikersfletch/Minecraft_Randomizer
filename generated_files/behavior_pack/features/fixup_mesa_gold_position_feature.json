@@ -1,0 +1,12 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "project_input_to_floor": false,
+    "x": 0,
+    "description": {"identifier": "minecraft:fixup_mesa_gold_position_feature"},
+    "y": 32,
+    "z": 0,
+    "places_feature": "minecraft:gold_ore_feature",
+    "iterations": 1
+  }
+}

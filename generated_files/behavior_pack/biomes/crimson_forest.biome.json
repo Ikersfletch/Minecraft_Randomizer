@@ -1,0 +1,62 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:biome": {
+    "components": {
+      "spawn_piglin": {},
+      "mutated": {},
+      "nether": {},
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 1,
+        "top_material": "minecraft:stripped_warped_hyphae",
+        "sea_material": "minecraft:lava",
+        "mid_material": "minecraft:mossy_cobblestone_stairs",
+        "sea_floor_material": "minecraft:gray_glazed_terracotta",
+        "foundation_material": "minecraft:target"
+      },
+      "minecraft:nether_generation_rules": {
+        "target_altitude": 0,
+        "target_weirdness": 0,
+        "target_humidity": 0,
+        "weight": 0,
+        "target_temperature": 0.4
+      },
+      "minecraft:surface_material_adjustments": {"adjustments": [
+        {
+          "noise_range": [
+            0.4,
+            1
+          ],
+          "materials": {
+            "top_material": "minecraft:netherrack",
+            "sea_floor_material": "minecraft:netherrack"
+          },
+          "noise_frequency_scale": 0.1
+        },
+        {
+          "noise_range": [
+            -0.75,
+            -0.5
+          ],
+          "materials": {
+            "top_material": "minecraft:nether_wart_block",
+            "sea_floor_material": "minecraft:nether_wart_block"
+          }
+        }
+      ]},
+      "crimson_forest": {},
+      "netherwart_forest": {},
+      "spawn_few_zombified_piglins": {},
+      "minecraft:climate": {
+        "snow_accumulation": [
+          0,
+          0.125
+        ],
+        "temperature": 2,
+        "red_spores": 0.25,
+        "downfall": 0
+      },
+      "monster": {}
+    },
+    "description": {"identifier": "crimson_forest"}
+  }
+}
