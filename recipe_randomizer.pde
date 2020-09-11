@@ -6,6 +6,7 @@ public class recipe_randomizer {
   
   public boolean change_results;
   public boolean change_ingredients;
+  public boolean change_ender_eyes;
   public boolean change_smelt_input;
   public boolean change_smelt_output;
   public boolean shuffle_smelt_station;

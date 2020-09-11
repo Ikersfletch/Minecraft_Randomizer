@@ -150,10 +150,10 @@ void menu() {
   popStyle();
   
   
-  randomize_tags = checkbox(20,70,randomize_tags,"Randomizes \'biome tags\', which determine what mobs, ores, plants, and structures spawn in the biome. Enable \'Experimental Gameplay\' when using randomizing World Generation.",0);
-  randomize_surface = checkbox(20,100,randomize_surface,"Randomizes the blocks which compose the \'grass\', \'dirt\', and sea floor. The end is currently unaffected by this. Enable \'Experimental Gameplay\' when using randomizing World Generation.",1);
-  randomize_base = checkbox(20,130,randomize_base, "Randomizes what replaces the stone and netherrack. The end is currently unaffected by this. Enable \'Experimental Gameplay\' when using randomizing World Generation.",2);
-  randomize_features = checkbox(20,160,randomize_features, "Randomizes the compositions of ores, trees, flowers, and tallgrass. Structures are not affected by this. Enable \'Experimental Gameplay\' when using randomizing World Generation.",3);
+  randomize_tags = checkbox(20,70,randomize_tags,"Randomizes \'biome tags\', which determine what mobs, ores, plants, and structures spawn in the biome. Enable \'Experimental Gameplay\' when randomizing World Generation.",0);
+  randomize_surface = checkbox(20,100,randomize_surface,"Randomizes the blocks which compose the \'grass\', \'dirt\', and sea floor. The end is currently unaffected by this. Enable \'Experimental Gameplay\' when randomizing World Generation.",1);
+  randomize_base = checkbox(20,130,randomize_base, "Randomizes what replaces the stone and netherrack. The end is currently unaffected by this. Enable \'Experimental Gameplay\' when randomizing World Generation.",2);
+  randomize_features = checkbox(20,160,randomize_features, "Randomizes the compositions of ores, trees, flowers, and tallgrass. Structures are not affected by this. Enable \'Experimental Gameplay\' when randomizing World Generation.",3);
   
   randomize_player = checkbox(20,215,randomize_player,"Includes the player as an alterable entity. Note that while this could change your health, starting equipment, and/or speed, it could also make you burn in daylight or suffocate in air.",4);
   ensure_random_loot = checkbox(20,245,ensure_random_loot,"Guaruntees that loot is randomized for every alterable entity. Due to the way the randomization of mobs works, some loot may get randomized regardless of this setting.",5);
@@ -171,8 +171,10 @@ void randomize() {
   entity_behavior_randomizer random = new entity_behavior_randomizer(randomize_player,ensure_random_loot);
   biome_randomizer biomes = new biome_randomizer(randomize_tags,randomize_surface,randomize_base,randomize_features);
   recipe_randomizer recipe = new recipe_randomizer(change_ingredients,change_results,change_smelt_input,change_smelt_output,shuffle_smelt_station);
-  
-  if (randomize_tags || randomize_surface || randomize_base || randomize_features) biomes.randomize_biomes();
+  if (randomize_tags || randomize_surface || randomize_base || randomize_features) {
+    biomes.randomize_biomes();
+    biomes.randomize_feature_rules();
+  }
   if (change_ingredients || change_results || change_smelt_input || change_smelt_output || shuffle_smelt_station) recipe.randomize_recipes();
   random.shuffle_entity_components();
   manifest.generate_pack_icon();

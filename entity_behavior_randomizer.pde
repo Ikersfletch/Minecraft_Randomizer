@@ -5,6 +5,10 @@ public class entity_behavior_randomizer {
   public boolean randomize_player;
   public boolean ensure_random_loot;
   
+  public boolean logic;
+  public boolean blaze_rods_obtainable;
+  public boolean ender_eyes_obtainable;
+  
   public entity_behavior_randomizer(boolean randomize_player, boolean ensure_random_loot) {
     sketch_path = ""; 
     String[] path_apart = split(sketchPath(),"\\");

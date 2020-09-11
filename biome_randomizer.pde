@@ -14,6 +14,8 @@ public class biome_randomizer {
   public JSONArray top_blocks;
   public JSONArray foundation_blocks;
   
+  public JSONObject feature_rule_categories;
+  
   public biome_randomizer(boolean randomize_tags, boolean randomize_surface, boolean randomize_base, boolean randomize_features) {
     sketch_path = ""; 
     String[] path_apart = split(sketchPath(),"\\");
@@ -24,7 +26,7 @@ public class biome_randomizer {
     this.randomize_features = randomize_features;
     tags = loadJSONArray(sketch_path+"generator_files/biome_tags.json");
     blocks = loadStrings(sketch_path+"generator_files/blocks.txt");
-    
+    feature_rule_categories = loadJSONObject(sketch_path+"generator_files/feature_ids.json");
     top_blocks = new JSONArray();
     foundation_blocks = new JSONArray();
   }
@@ -72,11 +74,12 @@ public class biome_randomizer {
             components.setJSONObject(get_biome_tag(), new JSONObject());
       saveJSONObject(biome_obj[i],sketch_path+"generated_files/behavior_pack/biomes/"+biome_file_names[i]);
     }
-    if (randomize_surface == true || randomize_base == true)
+    if (randomize_surface == true || randomize_base == true) {
       filter_block_list();
+      ensure_spawns();
+    }
     if (randomize_base == true || randomize_surface == true || randomize_features == true) {
       proof_features();
-      ensure_spawns();
     }
       
   }
@@ -106,7 +109,7 @@ public class biome_randomizer {
     return false;
   }
   
-  // makes the features able to generate on randomized blocks, randomizes them if necessary.
+  // makes the features able to generate on randomized blocks, randomizes them if desired.
   public void proof_features() {
     String[] feature_file_names = listFileNames(sketch_path+"generator_files/behavior_pack/features");
     JSONObject[] feature_file = new JSONObject[feature_file_names.length];
@@ -116,9 +119,12 @@ public class biome_randomizer {
       if (feature_file[i].hasKey("minecraft:ore_feature") == true) {
         JSONObject ore_feature = feature_file[i].getJSONObject("minecraft:ore_feature");
         if (ore_feature.hasKey("may_replace") == true) {
-          JSONArray may_replace = ore_feature.getJSONArray("may_replace");
-          for (int j = 0; j < foundation_blocks.size(); j ++)
+          JSONArray may_replace = new JSONArray();
+          for (int j = 0; j < min(foundation_blocks.size(),45); j ++)
             may_replace.setString(may_replace.size(),foundation_blocks.getString(j));
+          if (Math.random() < 0.2) 
+           may_replace.setString(may_replace.size(),"minecraft:air");
+          ore_feature.setJSONArray("may_replace",may_replace);
         }
         if (randomize_features == true && ore_feature.hasKey("places_block") == true) {
           ore_feature.remove("places_block");
@@ -144,87 +150,155 @@ public class biome_randomizer {
       } else if (feature_file[i].hasKey("minecraft:tree_feature") == true) {
         JSONObject tree_feature = feature_file[i].getJSONObject("minecraft:tree_feature");
         if (tree_feature.hasKey("may_grow_on") == true) {
-          JSONArray may_grow_on = tree_feature.getJSONArray("may_grow_on");
-          for (int j = 0; j < top_blocks.size(); j ++) 
+          JSONArray may_grow_on = new JSONArray();
+          for (int j = 0; j < min(top_blocks.size(),45); j ++) 
             may_grow_on.setString(may_grow_on.size(),top_blocks.getString(j));
+          if (Math.random() < 0.2) 
+            may_grow_on.setString(may_grow_on.size(),"minecraft:air");
+          
+          tree_feature.setJSONArray("may_grow_on",may_grow_on);
         }
         if (tree_feature.hasKey("may_grow_through") == true) {
-          JSONArray may_grow_through = tree_feature.getJSONArray("may_grow_through");
-          for (int j = 0; j < top_blocks.size(); j ++) 
+          JSONArray may_grow_through = new JSONArray();
+          for (int j = 0; j < min(top_blocks.size(),45); j ++) 
             may_grow_through.setString(may_grow_through.size(),top_blocks.getString(j));
+          may_grow_through.setString(may_grow_through.size(),"minecraft:air");
+          tree_feature.setJSONArray("may_grow_through",may_grow_through);
         }
         if (randomize_features == true) {
           // trunk randomization
           if (tree_feature.hasKey("trunk") == true) {
             JSONObject trunk = tree_feature.getJSONObject("trunk");
             JSONObject trunk_height = new JSONObject();
-            int min = (int)(Math.random()*6.0) + 2;
+            int min = (int)(Math.random()*5.0);
             trunk_height.setInt("range_min",min);
-            trunk_height.setInt("range_max",min + (int)(Math.random()*7.0)+1);
+            trunk_height.setInt("range_max",min + (int)(Math.random()*3.0)+1);
             if (trunk.hasKey("trunk_height") == true) 
               trunk.remove("trunk_height");
             trunk.setJSONObject("trunk_height",trunk_height);
             
-            // about 70% of trees will have randomized trunks, to help mitigate obtaining wood
-            if (Math.random() < 0.7) {
-              if (trunk.hasKey("trunk_block") == true) {
-                if (trunk.get("trunk_block") instanceof JSONObject) {
-                  JSONObject trunk_block = trunk.getJSONObject("trunk_block");
-                  trunk_block.setString("name",get_random_block());
-                  trunk_block.setJSONObject("states", new JSONObject());
-                } else if (trunk.get("trunk_block") instanceof String) {
-                  trunk.setString("trunk_block",get_random_block());
-                }
+            if (trunk.hasKey("trunk_block") == true) {
+              if (trunk.get("trunk_block") instanceof JSONObject) {
+                JSONObject trunk_block = trunk.getJSONObject("trunk_block");
+                trunk_block.setString("name",get_random_block());
+                trunk_block.setJSONObject("states", new JSONObject());
+              } else if (trunk.get("trunk_block") instanceof String) {
+                trunk.setString("trunk_block",get_random_block());
               }
             }
             // change what the vines generate to be...
+            
             if (trunk.hasKey("trunk_decoration") == true) {
               JSONObject trunk_decoration = trunk.getJSONObject("trunk_decoration");
               trunk_decoration.remove("decoration_block");
               trunk_decoration.setString("decoration_block",get_random_block());
-              trunk_decoration.remove("decoration_chance");
-              trunk_decoration.setFloat("decoration_chance",(float)(Math.random()));
+             // trunk_decoration.remove("decoration_chance");
+              //trunk_decoration.setFloat("decoration_chance",(float)(Math.random()*100));
+            }
+            
+          }
+          
+          // these crash the game. No idea why. 
+          /*
+          if (tree_feature.hasKey("fallen_trunk") == true) {
+            JSONObject fallen_trunk = tree_feature.getJSONObject("fallen_trunk");
+            JSONObject log_length = new JSONObject();
+            int min = (int)(Math.random()*5.0);
+            log_length.setInt("range_min",min);
+            log_length.setInt("range_max",min + (int)(Math.random()*3.0)+1);
+            if (fallen_trunk.hasKey("log_length") == true) 
+              fallen_trunk.remove("log_length");
+            fallen_trunk.setJSONObject("log_length",log_length);
+            
+            if (fallen_trunk.hasKey("trunk_block") == true) {
+              if (fallen_trunk.get("trunk_block") instanceof JSONObject) {
+                JSONObject trunk_block = fallen_trunk.getJSONObject("trunk_block");
+                trunk_block.setString("name",get_random_block());
+                trunk_block.setJSONObject("states", new JSONObject());
+              } else if (fallen_trunk.get("trunk_block") instanceof String) {
+                fallen_trunk.setString("trunk_block",get_random_block());
+              }
             }
           }
+          */
+          /*
+          if (tree_feature.hasKey("base_block") == true && tree_feature.get("base_block") instanceof JSONArray) {
+            JSONArray base_block = tree_feature.getJSONArray("base_block");
+            base_block.setString(0,get_random_block());
+            tree_feature.setJSONArray("base_block",base_block);
+          }
+          */
           
           if (tree_feature.hasKey("canopy") == true) {
             JSONObject canopy = tree_feature.getJSONObject("canopy");
             JSONObject canopy_offset = new JSONObject();
-            int min = (int)(Math.ceil(Math.random()*-5));
-            canopy_offset.setInt("min",min);
-            canopy_offset.setInt("max",0);
+            canopy_offset.setInt("min",(int)(Math.ceil(Math.random()*-5)));
+            canopy_offset.setInt("max",(int)(Math.random()*5));
             if (canopy.hasKey("canopy_offset") == true)
               canopy.remove("canopy_offset");
             canopy.setJSONObject("canopy_offset",canopy_offset);
-            
-            // again, to help mitigate lack of leaves...
-            if (Math.random() < 0.7) {
-              if (canopy.hasKey("leaf_block") == true) {
-                if (canopy.get("leaf_block") instanceof JSONObject) {
-                  JSONObject leaf_block = canopy.getJSONObject("leaf_block");
-                  leaf_block.setString("name",get_random_block());
-                  leaf_block.setJSONObject("states", new JSONObject());
-                } else if (canopy.get("leaf_block") instanceof String) {
-                  canopy.setString("leaf_block",get_random_block());
-                }
+           
+            if (canopy.hasKey("leaf_block") == true) {
+              if (canopy.get("leaf_block") instanceof JSONObject) {
+                JSONObject leaf_block = canopy.getJSONObject("leaf_block");
+                leaf_block.setString("name",get_random_block());
+                leaf_block.setJSONObject("states", new JSONObject());
+              } else if (canopy.get("leaf_block") instanceof String) {
+                canopy.setString("leaf_block",get_random_block());
               }
             }
+            
             if (canopy.hasKey("canopy_decoration")) {
               JSONObject canopy_decoration = canopy.getJSONObject("canopy_decoration");
               canopy_decoration.remove("decoration_block");
               canopy_decoration.setString("decoration_block",get_random_block());
-              canopy_decoration.remove("decoration_chance");
-              canopy_decoration.setFloat("decoration_chance", (float)(Math.random()));
+              //canopy_decoration.remove("decoration_chance");
+              //canopy_decoration.setFloat("decoration_chance", (float)(Math.random()*100));
             }
-            
           }
         }
-        
       }
       saveJSONObject(feature_file[i], sketch_path+"generated_files/behavior_pack/features/"+feature_file_names[i]);
     }
   }
   
+  // changes how feature rules are generated
+  public void randomize_feature_rules() {
+    
+    // replace any distribution of plants (flowers/tallgrass) to this, with only small chance not to.
+    JSONObject plant_y = new JSONObject();
+    plant_y.setString("distribution","uniform");
+    JSONArray plant_y_dist = new JSONArray();
+    plant_y_dist.setString(0,"query.heightmap(variable.worldx, variable.worldz)");
+    plant_y_dist.setString(1,"query.heightmap(variable.worldx, variable.worldz) + 1");
+    plant_y.setJSONArray("extent",plant_y_dist);
+    
+    
+    String[] feature_rule_file_names = listFileNames(sketch_path+"generator_files/behavior_pack/feature_rules");
+    JSONObject[] feature_rule_obj = new JSONObject[feature_rule_file_names.length];
+    for (int i = 0; i < feature_rule_obj.length; i ++) {
+      feature_rule_obj[i] = loadJSONObject(sketch_path+"generator_files/behavior_pack/feature_rules/"+feature_rule_file_names[i]);
+      JSONObject feature_rule = feature_rule_obj[i].getJSONObject("minecraft:feature_rules");
+      JSONObject description = feature_rule.getJSONObject("description");
+      String identifier = description.getString("identifier");
+      if (feature_rule_categories.getJSONObject("ground_plants").hasKey(identifier) && Math.random() < 0.95) {
+        JSONObject distribution = feature_rule.getJSONObject("distribution");
+        distribution.setJSONObject("y",plant_y);
+      }
+      else if (feature_rule_categories.getJSONObject("ores").hasKey(identifier)) {
+        JSONObject distribution = feature_rule.getJSONObject("distribution");
+        JSONObject ore_y = new JSONObject();
+        ore_y.setString("distribution","uniform");
+        JSONArray ore_y_dist = new JSONArray();
+        ore_y_dist.setInt(0,0);
+        ore_y_dist.setInt(1,(int)(Math.random()*240)+15);
+        ore_y.setJSONArray("extent",ore_y_dist);
+        distribution.setJSONObject("y",ore_y);
+        distribution.setInt("iterations",(int)(Math.random()*18)+2);
+      }
+      saveJSONObject(feature_rule_obj[i],sketch_path+"generated_files/behavior_pack/feature_rules/"+feature_rule_file_names[i]);
+    }
+  }
   public void ensure_spawns() {
     String[] spawn_file_names = listFileNames(sketch_path+"generator_files/behavior_pack/spawn_rules");
     JSONObject[] spawn_files = new JSONObject[spawn_file_names.length];
@@ -243,6 +317,7 @@ public class biome_randomizer {
       saveJSONObject(spawn_files[i],sketch_path+"generated_files/behavior_pack/spawn_rules/"+spawn_file_names[i]);
     }
   }
+  // iterates through the biomes and saves the tags to a json
   public void strip_biome_tags() {
     JSONArray biome_tags = new JSONArray();
     
@@ -260,6 +335,21 @@ public class biome_randomizer {
       }
     }
     saveJSONArray(biome_tags,sketch_path+"generator_files/biome_tags.json");
+  }
+  
+  // iterates through the feature rules and saves it to json
+  public void strip_feature_rules() {
+    JSONArray feature_ids = new JSONArray();
+    
+    String[] feature_rule_file_names = listFileNames(sketch_path+"generator_files/behavior_pack/feature_rules");
+    JSONObject[] feature_rule_obj = new JSONObject[feature_rule_file_names.length];
+    for (int i = 0; i < feature_rule_obj.length; i ++) {
+      feature_rule_obj[i] = loadJSONObject(sketch_path+"generator_files/behavior_pack/feature_rules/"+feature_rule_file_names[i]);
+      JSONObject feature_rule = feature_rule_obj[i].getJSONObject("minecraft:feature_rules");
+      JSONObject description = feature_rule.getJSONObject("description");
+      feature_ids.setString(feature_ids.size(),description.getString("identifier"));
+    }
+    saveJSONArray(feature_ids,sketch_path+"generator_files/feature_ids.json");
   }
   
   private String[] listFileNames(String dir) {
